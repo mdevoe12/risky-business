@@ -1,3 +1,14 @@
-<% @workers.each do |worker| %>
-<%= worker.first_name %><%= worker.last_name %>
-<% end %>
+<section class="workers">
+  <div class="row">
+    <% @workers.each do |worker| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <%= image_tag('default.png')  %>
+          <div class="caption">
+            <h3><%= worker.first_name %> <%= worker.last_name %></h3>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

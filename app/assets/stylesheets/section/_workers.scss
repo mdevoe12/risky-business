@@ -1,0 +1,14 @@
+.workers {
+  .row {
+    position: relative;
+    padding: 10px;
+    right: -10%;
+    .thumbnail {
+      width: 250px;
+      height: auto;
+      .caption {
+        text-align: center
+      }
+    }
+  }
+}
