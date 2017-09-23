@@ -5,7 +5,12 @@ Rails.application.routes.draw do
       namespace :workers do
         resources :tasks, only: [:create]
       end
-    end    
+
+      namespace :supervisors do
+        get '/tasks/:worker_id', to: 'tasks#index'
+      end
+    end
   end
 
+  resources :workers, only: [:show]
 end
