@@ -15,20 +15,13 @@ ActiveRecord::Schema.define(version: 20170923155725) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "question_responses", force: :cascade do |t|
+  create_table "responses", force: :cascade do |t|
     t.text "body"
-    t.bigint "question_id"
+    t.integer "question_num"
     t.bigint "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_question_responses_on_question_id"
-    t.index ["task_id"], name: "index_question_responses_on_task_id"
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_responses_on_task_id"
   end
 
   create_table "supervisors", force: :cascade do |t|
@@ -56,8 +49,7 @@ ActiveRecord::Schema.define(version: 20170923155725) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "question_responses", "questions"
-  add_foreign_key "question_responses", "tasks"
+  add_foreign_key "responses", "tasks"
   add_foreign_key "tasks", "supervisors"
   add_foreign_key "tasks", "workers"
 end
