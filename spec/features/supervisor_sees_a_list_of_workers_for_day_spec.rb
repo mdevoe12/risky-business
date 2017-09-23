@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 RSpec.feature "supervisor visits workers index" do
   scenario "they see a list of all workers for that day" do
     supervisor_1 = create(:supervisor)
