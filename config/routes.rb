@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :workers, only: [:show]
+  resources :workers, only: [:index, :show]
+
 end
