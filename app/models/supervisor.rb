@@ -4,6 +4,6 @@ class Supervisor < ApplicationRecord
 
   def workers_by_date(date)
     workers.joins(:tasks)
-          .where("tasks.created_at = ?", date)
+          .where("tasks.created_at = ?", date).distinct
   end
 end
