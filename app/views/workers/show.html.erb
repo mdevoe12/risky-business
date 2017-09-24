@@ -6,23 +6,24 @@
 
 <% @tasks.each do |task| %>
 <div class="row text-center">
-  <div class="panel col-md-6 col-md-offset-3" data-id="<%= task.id %>">
+  <div class="panel col-md-5 col-md-offset-2" style="height:350px; overflow-y: scroll">
     <% task.responses.reverse.each do |response| %>
       <h3><%= response.question_title %></h3>
       <p><%= response.body %></p>
     <% end %>
+  </div>
+  <div class="panel col-md-3" style="height:350px" data-id="<%= task.id %>">
     <h3>How dangerous do you think this actually is?</h3>
-    <div class="btn-group">
-      <% 7.times do |time| %>
-        <%= link_to "#{time + 1}", '#', class: "score-button btn btn-default"%>
-      <% end %>
+    <div class="slidecontainer">
+      <input type="range" min="1" max="7" value="4" class="slider risk-slider" list="ticks">
     </div>
     <h3>How well was this form filled out?</h3>
-    <div class="btn-group">
-      <% 5.times do |time| %>
-        <%= link_to "#{time + 1}", '#', class: "score-button btn btn-default"%>
-      <% end %>
+      <div class="slidecontainer">
+        <input type="range" min="1" max="5" value="4" class="slider score-slider">
     </div>
+    <br>
+    <br>
+    <a href="#" class="btn btn-primary score-button">Submit</a>
   </div>
 </div>
 <% end %>

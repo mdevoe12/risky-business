@@ -7,10 +7,11 @@ $(document).on('ready', function() {
 var scoreListener = function () {
   $('.score-button').click(function(event) {
     event.preventDefault();
-    var id = $(this).parent().parent().data().id;
-    var score = $(this).text();
+    var id = $(this).parent().data().id;
+    var score = $(this).siblings('div.slidecontainer').children('input.slider.score-slider').attr('value');
     var button = $(this);
-    updateScore(id, score, button);
+    var riskScore = $(this).siblings('div.slidecontainer').children('input.slider.risk-slider').attr('value');
+    updateScore(id, score, button, riskScore);
   })
 };
 
@@ -24,11 +25,11 @@ var fetchAverage = function(workerId) {
   })
 }
 
-var updateScore = function(id, score, button) {
+var updateScore = function(id, score, button, riskScore) {
   return $.ajax({
     url: '/api/v1/supervisors/tasks/' + id,
     method: 'PUT',
-    data: {points: score},
+    data: {points: score, risk: riskScore},
     headers: {
       'X-Transaction': 'POST Example',
       'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')

@@ -1,7 +1,7 @@
 require 'csv'
 start = Time.now
 
-supervisor = Supervisor.create(first_name: "Jon", last_name: "Snow")\
+supervisor = Supervisor.create(first_name: "Jon", last_name: "Snow")
 
 questions = ['What are you doing?', 'What could do go wrong?', 'How could it affect you?', 'How could it go wrong?']
 
@@ -66,14 +66,6 @@ persons = CSV.parse(file)
         :updated_at => date
       )
     end
-
-    Response.create(
-      :question_title => 'How dangerous is this task?',
-      :body => rand(1..7),
-      :task_id => task.id,
-      :created_at => date,
-      :updated_at => date
-    )
   end
   puts "creating record #{counter}"
   counter += 1
