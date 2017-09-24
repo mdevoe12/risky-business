@@ -18,7 +18,7 @@ $(document).ready(function(){
     console.log(meeting_expectations_count)
     console.log(needs_improvement_count)
 
-  Highcharts.chart('container', {
+  Highcharts.chart('form-results', {
   chart: {
       plotBackgroundColor: null,
       plotBorderWidth: null,
