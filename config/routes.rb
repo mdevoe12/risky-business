@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
       namespace :supervisors do
         get '/tasks/:worker_id', to: 'tasks#index'
+        put '/tasks/:id', to: 'tasks#update'
       end
     end
   end

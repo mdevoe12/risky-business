@@ -24,6 +24,14 @@ describe 'Supervisor tasks API' do
     expect(task).to have_key 'responses'
     expect(responses.count).to eq 4
     expect(responses.first).to have_key 'body'
-    expect(responses.first).to have_key 'question_num'
+  end
+
+  it "can update the score of a task" do
+    task = create(:task, :with_responses)
+
+    expect(task.points).to be_nil
+    put "/api/v1/supervisors/tasks/#{task.id}", params: {points: 5}
+
+    expect(Task.last.points).to eq 5
   end
 end
