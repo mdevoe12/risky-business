@@ -3,6 +3,8 @@ start = Time.now
 
 supervisor = Supervisor.create(first_name: "Jon", last_name: "Snow")
 
+questions = ['What are you doing?', 'What could do go wrong?', 'How could it affect you?', 'How could it go wrong?']
+
 counter = 1
 
 file = File.read('db/csv/player_images.csv')
@@ -26,10 +28,18 @@ persons = CSV.parse(file)
       :updated_at => date
     )
 
-    6.times do |n|
+    questions.each do |question|
       Response.create(
-        :question_title => Faker::Hipster.sentence,
+        :question_title => question,
         :body => Faker::Hipster.paragraph,
+        :task_id => task.id,
+        :created_at => date,
+        :updated_at => date
+      )
+
+      Response.create(
+        :question_title => 'How dangerous is this task?',
+        :body => rand(1..7),
         :task_id => task.id,
         :created_at => date,
         :updated_at => date
@@ -47,9 +57,9 @@ persons = CSV.parse(file)
       :updated_at => date
     )
 
-    6.times do |n|
+    questions.each do |question|
       Response.create(
-        :question_title => Faker::Hipster.sentence,
+        :question_title => question,
         :body => Faker::Hipster.paragraph,
         :task_id => task.id,
         :created_at => date,
