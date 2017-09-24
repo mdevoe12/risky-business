@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :task do
     description "MyText"
-    worker nil
+    worker 
     supervisor nil
     points 1
   end
