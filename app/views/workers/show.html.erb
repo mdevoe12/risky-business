@@ -1,0 +1,15 @@
+<h2>FLRAs for <%= @worker.first_name %></h2>
+
+<% @tasks.each do |task| %>
+<div class="row">
+  <div class="panel col-md-6 col-md-offset-2" data-id="<%= task.id %>">
+    <% task.responses.each do |response| %>
+      <h3><%= response.question_title %></h3>
+      <p><%= response.body %></p>
+    <% end %>
+    <% 5.times do |time| %>
+      <%= link_to "#{time + 1}", '#', class: "score-button"%>
+    <% end %>
+  </div>
+</div>
+<% end %>
