@@ -6,7 +6,7 @@ Rails.application.routes.draw do
         resources :tasks, only: [:create]
       end
       namespace :supervisors, only: [] do
-        get '/:id/task_scores', to: 'task_scores#show'
+        get '/:id/task_scores', to: 'task_scores#index'
       end
     end
   end

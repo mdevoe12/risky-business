@@ -3,7 +3,7 @@ class Supervisor < ApplicationRecord
   has_many :workers, through: :tasks
 
   def task_score_counts
-    
+    tasks.group("points").count
   end
 
   def workers_by_date(date)

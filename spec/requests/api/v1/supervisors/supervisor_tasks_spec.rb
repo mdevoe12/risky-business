@@ -15,10 +15,11 @@ describe 'Supervisor tasks API' do
     get "/api/v1/supervisors/#{supervisor.id}/task_scores"
 
     expect(response).to be_success
+    counts = JSON.parse(response.body)
 
-    expect(response.first["5"]).to eq("4")
-    expect(response.first["3"]).to eq("3")
-    expect(response.first["2"]).to eq("2")
-    expect(response.first["1"]).to eq("1")
+    expect(counts["1"]).to eq(1)
+    expect(counts["2"]).to eq(2)
+    expect(counts["3"]).to eq(3)
+    expect(counts["5"]).to eq(4)
   end
 end
