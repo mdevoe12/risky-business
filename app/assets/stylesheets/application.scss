@@ -18,3 +18,17 @@
 body {
   background-color: #EEEEEE;
 }
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  background-color: #122732;
+  padding: 10px;
+  color: #C4900F ;
+  margin: 0;
+  text-align: center;
+}

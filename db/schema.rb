@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170923222920) do
     t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   add_foreign_key "responses", "tasks"

@@ -1,11 +1,12 @@
+<h3>Workers with Tasks Today</h3>
 <section class="workers">
   <div class="row">
     <% @workers.each do |worker| %>
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <%= image_tag('default.png')  %>
+          <img src= "<%= worker.image %>">
           <div class="caption">
-            <h3><%= worker.first_name %> <%= worker.last_name %></h3>
+            <a href="<%= root_path %>"><h3><%= worker.first_name %> <%= worker.last_name %></h3><a>
           </div>
         </div>
       </div>

@@ -1,17 +1,23 @@
+require 'csv'
 start = Time.now
 
 supervisor = Supervisor.create(first_name: "Jon", last_name: "Snow")
 
 counter = 1
 
+file = File.read('db/csv/player_images.csv')
+persons = CSV.parse(file)
+
 30.times do
+  random_person = persons.sample
   worker = Worker.create(
-    :first_name => Faker::Name.first_name,
-    :last_name => Faker::Name.last_name
+    :first_name => random_person[0].split(' ')[0],
+    :last_name => random_person[0].split(' ')[1],
+    :image => random_person[1]
   )
 
   100.times do
-    date = (Date.today - rand(1..30).to_i.days)
+    date = (Date.today - rand(0..30).to_i.days)
     task = Task.create(
       :description => Faker::Hipster.sentence,
       :worker_id => worker.id,
