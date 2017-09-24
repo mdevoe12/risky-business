@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170923222920) do
+
+
+ActiveRecord::Schema.define(version: 20170924034935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +40,9 @@ ActiveRecord::Schema.define(version: 20170923222920) do
     t.integer "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "worker_risk_score"
+    t.integer "super_risk_score"
+    t.integer "risk_differential"
     t.index ["supervisor_id"], name: "index_tasks_on_supervisor_id"
     t.index ["worker_id"], name: "index_tasks_on_worker_id"
   end
