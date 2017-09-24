@@ -2,8 +2,9 @@
 $(document).ready(function(){
   $.ajax({
     type: 'GET',
-    url: '/api/v1/contestants/1/weekly_points',
+    url: '/api/v1/supervisors/' + $('.supervisor_information').data('id') + '/task_scores',
     success: function(data) {
+      console.log(data)
 
   Highcharts.chart('container', {
   chart: {
