@@ -1,9 +1,3 @@
-$(document).on('ready', function() {
-  var workerId = $('[data-worker]').data().worker;
-  fetchAverage(workerId);
-  scoreListener();
-  slideListener();
-});
 
 var slideListener = function() {
   $('.slider').change(function() {
