@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
         get '/:id/average', to: 'average#show'
       end
-
+      namespace :supervisors, only: [] do
+        get '/:id/task_scores', to: 'task_scores#index'
+      end
       namespace :supervisors do
         get '/tasks/:worker_id', to: 'tasks#index'
         put '/tasks/:id', to: 'tasks#update'
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/insights', to: 'insights#index'
   resources :workers, only: [:index, :show]
 
   get '/support', to: 'support#index'
