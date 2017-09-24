@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
+
 ActiveRecord::Schema.define(version: 20170924034935) do
 
   # These are extensions that must be enabled in order to support this database
@@ -18,10 +19,10 @@ ActiveRecord::Schema.define(version: 20170924034935) do
 
   create_table "responses", force: :cascade do |t|
     t.text "body"
-    t.integer "question_num"
     t.bigint "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "question_title"
     t.index ["task_id"], name: "index_responses_on_task_id"
   end
 
