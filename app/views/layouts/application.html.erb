@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RiskyBusiness</title>
+    <meta charset=“utf-8”>
+        <meta http-equiv=“X-UA-Compatible” content=“IE=edge”>
+        <meta name=“viewport” content=“width=device-width, initial-scale=1”>
+    <title>MitiG8</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+
+    <div className="header"><h1><img src='//barrick.q4cdn.com/808035602/files/design/logo.png' alt=‘Barrick Gold Logo’/></h1></div>
+
+    <%= render partial: 'layouts/navbar' %>
+
+    <div><% flash.each do |type, message| %>
+      <%= content_tag :div, message.html_safe, class: Alert.alert_type(type) %>
+    <% end %></div>
+
     <%= yield %>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   </body>
 </html>
