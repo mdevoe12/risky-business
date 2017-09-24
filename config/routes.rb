@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :workers do
         resources :tasks, only: [:create]
+
+        get '/:id/average', to: 'average#show'
       end
 
       namespace :supervisors do
