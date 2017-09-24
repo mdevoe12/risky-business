@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :workers, only: [:index]
+
+  get '/support', to: 'support#index'
 end
