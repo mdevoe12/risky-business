@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  get '/followups', to: 'followups#index'
 
   get '/insights', to: 'insights#index'
   resources :workers, only: [:index, :show]

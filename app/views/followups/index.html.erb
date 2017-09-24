@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Tasks Flagged for Followup</h1><br>
+</div>
+<div class="row">
+
+<% @tasks.each do |task| %>
+  <div class="panel col-md-6 col-md-offset-3" data-id="<%= task.id %>">
+    <p class = "text-right"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></p>
+    <h4 class = "text-center">Task ID: <%= task.id %></h4><br>
+    <p class ="risk-differential">Risk Differential: <%= task.risk_differential %></p><br>
+    <p>Description: <%= task.description %></p><br>
+    <p>Field worker: <a href="/workers/<%= task.worker.id %>"><%= task.worker.first_name %><%= task.worker.last_name %></p></a><br>
+    <p>Supervisor: <%= task.supervisor.first_name %> <%= task.supervisor.last_name %></p><br>
+    <em><p>Created on: <%= task.created_at %></p></em><br>
+  </div>
+<% end %>
+</div>

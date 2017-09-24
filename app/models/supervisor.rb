@@ -10,4 +10,8 @@ class Supervisor < ApplicationRecord
     workers.joins(:tasks)
           .where("tasks.created_at = ?", date).distinct
   end
+
+  def followup_tasks
+    tasks.where("risk_differential > ?", 1)
+  end
 end
