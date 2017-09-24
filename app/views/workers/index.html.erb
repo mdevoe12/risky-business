@@ -3,7 +3,7 @@
   <div class="row">
     <% @workers.each do |worker| %>
       <div class="col-sm-6 col-md-4">
-        <a href="<%= root_path %>">
+        <a href="<%= worker_path(worker.id) %>">
           <div class="thumbnail">
             <img src= "<%= worker.image %>">
             <div class="caption">
