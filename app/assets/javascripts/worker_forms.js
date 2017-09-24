@@ -2,15 +2,22 @@ $(document).on('ready', function() {
   var workerId = $('[data-worker]').data().worker;
   fetchAverage(workerId);
   scoreListener();
+  slideListener();
 });
+
+var slideListener = function() {
+  $('.slider').change(function() {
+    $(this).next().text($(this)[0].value);
+  })
+};
 
 var scoreListener = function () {
   $('.score-button').click(function(event) {
     event.preventDefault();
     var id = $(this).parent().data().id;
-    var score = $(this).siblings('div.slidecontainer').children('input.slider.score-slider').attr('value');
+    var score = $(this).siblings('div.slidecontainer').children('input.slider.score-slider')[0].value;
     var button = $(this);
-    var riskScore = $(this).siblings('div.slidecontainer').children('input.slider.risk-slider').attr('value');
+    var riskScore = $(this).siblings('div.slidecontainer').children('input.slider.risk-slider')[0].value;
     updateScore(id, score, button, riskScore);
   })
 };
