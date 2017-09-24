@@ -1,15 +1,33 @@
 <div class="title-show"><h2>FLRAs for <%= @worker.first_name %></h2></div>
 
+<div data-worker="<%= @worker.id %>"></div>
+
+<h3>Average Form Score: <span class="average"></span></h3>
+
 <% @tasks.each do |task| %>
-<div class="row">
-  <div class="panel col-md-6 col-md-offset-3" data-id="<%= task.id %>">
-    <% task.responses.each do |response| %>
+<div class="row text-center">
+  <div class="panel col-md-5 col-md-offset-2" style="height:350px; overflow-y: scroll">
+    <h3>Worker Risk Score</h3>
+    <h3><%= task.worker_risk_score %></h3>
+    <% task.responses.reverse.each do |response| %>
       <h3><%= response.question_title %></h3>
       <p><%= response.body %></p>
     <% end %>
-    <% 5.times do |time| %>
-      <%= link_to "#{time + 1}", '#', class: "score-button"%>
-    <% end %>
+  </div>
+  <div class="panel col-md-3" style="height:350px" data-id="<%= task.id %>">
+    <h3>How dangerous do you think this actually is?</h3>
+    <div class="slidecontainer">
+      <input type="range" min="1" max="7" value="4" class="slider risk-slider" id="myRange">
+      <span>4</span>
+    </div>
+    <h3>How well was this form filled out?</h3>
+    <div class="slidecontainer">
+      <input type="range" min="1" max="5" value="4" class="slider score-slider">
+      <span>4</span>
+    </div>
+    <br>
+    <br>
+    <a href="#" class="btn btn-primary score-button">Submit</a>
   </div>
 </div>
 <% end %>

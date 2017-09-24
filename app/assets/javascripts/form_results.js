@@ -1,6 +1,11 @@
-
-
 $(document).ready(function(){
+  if ($('.slider').length > 0) {
+    var workerId = $('[data-worker]').data().worker;
+    fetchAverage(workerId);
+    scoreListener();
+    slideListener();
+  };
+
   $.ajax({
     type: 'GET',
     url: '/api/v1/supervisors/' + $('.supervisor_information').data('id') + '/task_scores',
