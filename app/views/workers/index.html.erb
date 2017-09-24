@@ -3,12 +3,14 @@
   <div class="row">
     <% @workers.each do |worker| %>
       <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src= "<%= worker.image %>">
-          <div class="caption">
-            <a href="<%= root_path %>"><h3><%= worker.first_name %> <%= worker.last_name %></h3><a>
+        <a href="<%= worker_path(worker.id) %>">
+          <div class="thumbnail">
+            <img src= "<%= worker.image %>">
+            <div class="caption">
+              <h3><%= worker.first_name %> <%= worker.last_name %></h3>
+            </div>
           </div>
-        </div>
+        <a>
       </div>
     <% end %>
   </div>

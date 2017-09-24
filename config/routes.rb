@@ -8,10 +8,16 @@ Rails.application.routes.draw do
       namespace :supervisors, only: [] do
         get '/:id/task_scores', to: 'task_scores#index'
       end
+      namespace :supervisors do
+        get '/tasks/:worker_id', to: 'tasks#index'
+        put '/tasks/:id', to: 'tasks#update'
+      end
     end
   end
 
   get '/insights', to: 'insights#index'
+  resources :workers, only: [:index, :show]
 
-  resources :workers, only: [:index]
+  get '/support', to: 'support#index'
+  get '/tasks', to: 'tasks#index'
 end
