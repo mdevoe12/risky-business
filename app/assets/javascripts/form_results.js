@@ -26,7 +26,7 @@ $(document).ready(function(){
       type: 'pie'
   },
   title: {
-      text: 'Your FLRA Results'
+      text: 'Your FLRA Results this Month'
   },
   tooltip: {
       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

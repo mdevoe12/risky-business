@@ -9,7 +9,7 @@ Highcharts.chart('incident-map', {
         text: 'Worker Average Score vs Incident Rate'
     },
     subtitle: {
-        
+
     },
     xAxis: {
       min: 0, max: 5,
@@ -24,7 +24,7 @@ Highcharts.chart('incident-map', {
     yAxis: {
       min: 0, max: 20,
         title: {
-            text: 'Monthly Worker Incident Rate'
+            text: 'Yearly Worker Incident Rate'
         }
     },
     legend: {
@@ -93,6 +93,7 @@ Highcharts.chart('incident-map', {
             [highScore(), lowIncidentRate()], [highScore(), lowIncidentRate()],
             [highScore(), lowIncidentRate()], [highScore(), lowIncidentRate()],
             [lowScore(), lowIncidentRate()], [lowScore(), lowIncidentRate()],
+            [lowScore(), lowIncidentRate()], [lowScore(), lowIncidentRate()],
             [highScore(), highIncidentRate()], [highScore(), highIncidentRate()]
           ]
     }]
@@ -112,7 +113,7 @@ function highScore() {
 }
 
 function highIncidentRate() {
-  num = (Math.random() * 6 + 10).toFixed(2);
+  num = (Math.random() * 6 + 12).toFixed(2);
   return parseFloat(num);
 
 }
