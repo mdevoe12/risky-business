@@ -4,7 +4,19 @@ $(document).ready(function(){
     type: 'GET',
     url: '/api/v1/supervisors/' + $('.supervisor_information').data('id') + '/task_scores',
     success: function(data) {
-      console.log(data)
+
+      meeting_expectations_count = 0
+      needs_improvement_count = 0
+
+      $.each(data, function (key, value) {
+      if(key >= 3){
+        needs_improvement_count += value
+      } else {
+        meeting_expectations_count += value
+      }
+    })
+    console.log(meeting_expectations_count)
+    console.log(needs_improvement_count)
 
   Highcharts.chart('container', {
   chart: {
@@ -14,7 +26,7 @@ $(document).ready(function(){
       type: 'pie'
   },
   title: {
-      text: 'Employee Safety Form Performance'
+      text: 'Your FLRA Results'
   },
   tooltip: {
       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -37,10 +49,10 @@ $(document).ready(function(){
       colorByPoint: true,
       data: [{
           name: 'Meeting Expectations',
-          y: 14
+          y: meeting_expectations_count
       }, {
           name: 'Needs Improvement',
-          y: 20
+          y: needs_improvement_count
       }]
     }]
   })
