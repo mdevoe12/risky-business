@@ -12,8 +12,9 @@ h3 {
     .thumbnail {
       width: 250px;
       height: auto;
+      border: 3px solid #d60000;
       .caption {
-        text-align: center
+        text-align: center;
       }
     }
   }
