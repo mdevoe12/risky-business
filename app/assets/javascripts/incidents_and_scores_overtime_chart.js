@@ -2,8 +2,14 @@ $(document).ready(function(){
 
 Highcharts.chart('incidents-scores-time', {
     title: {
-        text: 'Incidents and Scores Over Time'
+        text: '2017 Incidents and FLRA Scores Trends'
     },
+    colors: [
+            '#122732',
+            '#C4900F',
+            '#A3333D',
+            '#A3333D'
+          ],
     xAxis: {
         categories: ['January', 'February', 'March', 'April', 'May', "June", 'July', 'August', "September"]
     },
@@ -48,11 +54,11 @@ Highcharts.chart('incidents-scores-time', {
     },
     series: [{
         type: 'column',
-        name: 'Meeting Expectations',
+        name: 'FLRAs Meeting Expectations',
         data: [52, 63, 70, 78, 98, 101, 112, 123, 140]
     }, {
         type: 'column',
-        name: 'Needs Improvement',
+        name: 'FLRAs Needing Improvement',
         data: [98, 83, 74, 60, 45, 42, 38, 33, 25]
     }, {
         type: 'spline',

@@ -6,16 +6,20 @@ Highcharts.chart('incident-map', {
         zoomType: 'xy'
     },
     title: {
-        text: 'Worker Average Score vs Incident Rate'
+        text: '2017 Average FLRA Score vs Incident Rate per Worker'
     },
     subtitle: {
 
     },
+    colors: [
+            '#122732',
+            '#C4900F',
+          ],
     xAxis: {
       min: 0, max: 5,
         title: {
             enabled: true,
-            text: 'Worker Average Score'
+            text: 'Average FLRA Score'
         },
         startOnTick: true,
         endOnTick: true,
@@ -24,7 +28,7 @@ Highcharts.chart('incident-map', {
     yAxis: {
       min: 0, max: 20,
         title: {
-            text: 'Yearly Worker Incident Rate'
+            text: 'Worker Incidents'
         }
     },
     legend: {

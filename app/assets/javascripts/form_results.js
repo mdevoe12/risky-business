@@ -1,4 +1,5 @@
 
+
 $(document).ready(function(){
   $.ajax({
     type: 'GET',
@@ -15,8 +16,6 @@ $(document).ready(function(){
         meeting_expectations_count += value
       }
     })
-    console.log(meeting_expectations_count)
-    console.log(needs_improvement_count)
 
   Highcharts.chart('form-results', {
   chart: {
@@ -25,8 +24,12 @@ $(document).ready(function(){
       plotShadow: false,
       type: 'pie'
   },
+  colors: [
+          '#122732',
+          '#C4900F',
+        ],
   title: {
-      text: 'Your FLRA Results this Month'
+      text: 'September 2017 FLRA Scores'
   },
   tooltip: {
       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -39,7 +42,7 @@ $(document).ready(function(){
               enabled: true,
               format: '<b>{point.name}</b>: {point.percentage:.1f} %',
               style: {
-                  color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                colors: ['pink', 'black']
               }
           }
       }
