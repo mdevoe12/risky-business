@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   resources :workers, only: [:index, :show]
 
   get '/support', to: 'support#index'
+  get '/tasks', to: 'tasks#index'
 end
