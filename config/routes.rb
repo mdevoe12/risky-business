@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 
   resources :workers, only: [:index, :show]
 
+  root to: 'workers#index'
 end

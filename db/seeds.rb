@@ -21,9 +21,9 @@ counter = 1
       :updated_at => date
     )
 
-    4.times do |n|
+    6.times do |n|
       Response.create(
-        :question_num => n,
+        :question_title => Faker::Hipster.sentence,
         :body => Faker::Hipster.paragraph,
         :task_id => task.id,
         :created_at => date,

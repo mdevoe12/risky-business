@@ -1,7 +1,12 @@
-<h2>FLRAs for <%= @worker.name %></h2>
+<h2>FLRAs for <%= @worker.first_name %></h2>
 
 <% @tasks.each do |task| %>
-  <div class="panel">
-    
+<div class="row">
+  <div class="panel col-md-6 col-md-offset-2">
+    <% task.responses.each do |response| %>
+      <h3><%= response.question_title %></h3>
+      <p><%= response.body %></p>
+    <% end %>
   </div>
+</div>
 <% end %>
