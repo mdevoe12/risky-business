@@ -5,7 +5,9 @@ Rails.application.routes.draw do
       namespace :workers do
         resources :tasks, only: [:create]
       end
-    end    
+    end
   end
+
+  get '/insights', to: 'insights#index'
 
 end
