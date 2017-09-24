@@ -12,8 +12,7 @@ persons = CSV.parse(file)
   random_person = persons.sample
   worker = Worker.create(
     :first_name => random_person[0].split(' ')[0],
-    :last_name => random_person[0].split(' ')[1],
-    :image => random_person[1]
+    :last_name => random_person[0].split(' ')[1]
   )
 
   20.times do
