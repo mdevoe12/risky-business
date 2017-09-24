@@ -1,0 +1,20 @@
+h3 {
+  color: #122732;
+  text-align: center;
+}
+.workers {
+  position: relative;
+  left: -3%;
+  .row {
+    position: relative;
+    padding: 10px;
+    right: -10%;
+    .thumbnail {
+      width: 250px;
+      height: auto;
+      .caption {
+        text-align: center
+      }
+    }
+  }
+}

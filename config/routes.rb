@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root to: 'workers#index'
   namespace :api do
     namespace :v1 do
       namespace :workers do
@@ -13,5 +13,5 @@ Rails.application.routes.draw do
 
   get '/insights', to: 'insights#index'
 
-
+  resources :workers, only: [:index]
 end
