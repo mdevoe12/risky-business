@@ -16,13 +16,34 @@ persons = CSV.parse(file)
     :image => random_person[1]
   )
 
-  100.times do
+  20.times do
     date = (Date.today - rand(0..30).to_i.days)
     task = Task.create(
       :description => Faker::Hipster.sentence,
       :worker_id => worker.id,
       :supervisor_id => supervisor.id,
       :points => rand(1..5),
+      :created_at => date,
+      :updated_at => date
+    )
+
+    6.times do |n|
+      Response.create(
+        :question_title => Faker::Hipster.sentence,
+        :body => Faker::Hipster.paragraph,
+        :task_id => task.id,
+        :created_at => date,
+        :updated_at => date
+      )
+    end
+  end
+
+  20.times do
+    date = (Date.today - rand(0..30).to_i.days)
+    task = Task.create(
+      :description => Faker::Hipster.sentence,
+      :worker_id => worker.id,
+      :supervisor_id => supervisor.id,
       :created_at => date,
       :updated_at => date
     )

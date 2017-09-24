@@ -7,7 +7,7 @@ class Api::V1::Supervisors::TasksController < ApplicationController
 
   def update
     task = Task.find(params[:id])
-    task.update!(points: params[:points])
-    render nothing: true, status: 201
+    task.points = params[:points].to_i
+    task.save!
   end
 end

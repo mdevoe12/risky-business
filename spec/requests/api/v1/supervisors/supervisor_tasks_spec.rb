@@ -29,9 +29,8 @@ describe 'Supervisor tasks API' do
   it "can update the score of a task" do
     task = create(:task, :with_responses)
 
-    expect(task.points).to be_nil
     put "/api/v1/supervisors/tasks/#{task.id}", params: {points: 5}
 
-    expect(Task.last.points).to eq 5
+    expect(Task.find(task.id).points).to eq 5
   end
 end

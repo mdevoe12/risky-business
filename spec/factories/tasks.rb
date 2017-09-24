@@ -3,7 +3,7 @@ FactoryGirl.define do
     description "MyText"
     worker
     supervisor
-    points 1
+    points nil
 
     trait :with_responses do
       titles = ['What are you doing?', 'What could do go wrong?', 'How could it affect you?', 'How could it go wrong?']
