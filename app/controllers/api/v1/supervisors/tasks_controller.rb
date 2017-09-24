@@ -10,5 +10,6 @@ class Api::V1::Supervisors::TasksController < ApplicationController
     task.points = params[:points].to_i
     task.super_risk_score = params[:risk].to_i
     task.save!
+    task.calc_diff
   end
 end

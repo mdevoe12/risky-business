@@ -7,6 +7,8 @@
 <% @tasks.each do |task| %>
 <div class="row text-center">
   <div class="panel col-md-5 col-md-offset-2" style="height:350px; overflow-y: scroll">
+    <h3>Worker Risk Score</h3>
+    <h3><%= task.worker_risk_score %></h3>
     <% task.responses.reverse.each do |response| %>
       <h3><%= response.question_title %></h3>
       <p><%= response.body %></p>

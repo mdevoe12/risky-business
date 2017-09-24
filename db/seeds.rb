@@ -24,6 +24,7 @@ persons = CSV.parse(file)
       :worker_id => worker.id,
       :supervisor_id => supervisor.id,
       :points => rand(1..5),
+      :worker_risk_score => rand(1..7),
       :created_at => date,
       :updated_at => date
     )
@@ -32,14 +33,6 @@ persons = CSV.parse(file)
       Response.create(
         :question_title => question,
         :body => Faker::Hipster.paragraph,
-        :task_id => task.id,
-        :created_at => date,
-        :updated_at => date
-      )
-
-      Response.create(
-        :question_title => 'How dangerous is this task?',
-        :body => rand(1..7),
         :task_id => task.id,
         :created_at => date,
         :updated_at => date
@@ -53,6 +46,7 @@ persons = CSV.parse(file)
       :description => Faker::Hipster.sentence,
       :worker_id => worker.id,
       :supervisor_id => supervisor.id,
+      :worker_risk_score => rand(1..7),
       :created_at => date,
       :updated_at => date
     )
