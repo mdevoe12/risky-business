@@ -1,5 +1,7 @@
 <h3>Your Outstanding FLRAs</h3>
 <% current_user.outstanding_flras.each do |flra| %>
+<div data-worker="<%= flra.worker_id %>"></div>
+
 <div class="row text-center">
   <div class="panel col-md-5 col-md-offset-2" style="height:350px; overflow-y: scroll">
     <h3>Worker Risk Score</h3>

@@ -6,10 +6,11 @@ class Api::V1::Supervisors::TasksController < ApplicationController
   end
 
   def update
-    task = Task.find(params[:id])
-    task.points = params[:points].to_i
-    task.super_risk_score = params[:risk].to_i
-    task.save!
-    task.calc_diff
+    flra = Flra.find(params[:id])
+    flra.points = params[:points].to_i
+    flra.super_risk_score = params[:risk].to_i
+    byebug
+    flra.save!
+    flra.calc_diff
   end
 end
