@@ -1,14 +1,68 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RiskyBusiness</title>
+    <meta charset=“utf-8”>
+    <meta http-equiv=“X-UA-Compatible” content=“IE=edge”>
+    <meta name=“viewport” content=“width=device-width, initial-scale=1”>
+    <title>MitiG8</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application' %>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <style>
+      .slidecontainer {
+          width: 100%;
+      }
+
+      .slider {
+          -webkit-appearance: none;
+          width: 100%;
+          height: 25px;
+          background: #d3d3d3;
+          outline: none;
+          opacity: 0.7;
+          -webkit-transition: .2s;
+          transition: opacity .2s;
+      }
+
+      .slider:hover {
+          opacity: 1;
+      }
+
+      .slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 25px;
+          height: 25px;
+          background: #4CAF50;
+          cursor: pointer;
+      }
+
+      .slider::-moz-range-thumb {
+          width: 25px;
+          height: 25px;
+          background: #4CAF50;
+          cursor: pointer;
+      }
+
+    </style>
   </head>
 
   <body>
-    <%= yield %>
+
+    <div className="header"><h1><img src='//barrick.q4cdn.com/808035602/files/design/logo.png' alt=‘Barrick Gold Logo’/></h1></div>
+
+    <%= render partial: 'layouts/navbar' %>
+
+    <div><% flash.each do |type, message| %>
+      <%= content_tag :div, message.html_safe, class: Alert.alert_type(type) %>
+    <% end %></div>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   </body>
 </html>

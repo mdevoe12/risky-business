@@ -9,7 +9,35 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
  */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import "section/*";
+
+body {
+  background-color: #EEEEEE;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  background-color: #122732;
+  padding: 10px;
+  color: #C4900F ;
+  margin: 0;
+  text-align: center;
+}
+
+.glyphicon-flag {
+  color: red;
+  background-color: white;
+}
+
+.risk-differential {
+  color: red;
+}
