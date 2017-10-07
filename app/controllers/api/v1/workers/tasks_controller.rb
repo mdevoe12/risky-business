@@ -1,13 +1,18 @@
 class Api::V1::Workers::TasksController < ApplicationController
 
-  def create
+  skip_before_action :verify_authenticity_token, only: [:create]
 
-    task = Task.create!(description: params[:task_description],
-                 worker_id: params[:worker_id],
-                 supervisor_id: params[:supervisor_id])
-    params[:questions].each do |q, a|
-      task.responses.create!(body: "#{a}", question_num: q.to_i)
-    end
+  def create
+    result = JSON.parse(response.request.body.string, symbolize_names: :true)
+
+    task = Task.create!(description: result[:Task_Type],
+                          worker_id: result[:worker_id],
+                      supervisor_id: result[:supervisor_id],
+                  worker_risk_score: result[:Risk_Level])
+         task.responses.create(body: result[:Exact_Task])
+         task.responses.create(body: result[:Risk_Concerns])
+         task.responses.create(body: result[:description])
+         task.responses.create(body: result[:Mitigation])
 
   end
 

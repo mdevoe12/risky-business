@@ -1,0 +1,11 @@
+<h3>Most Recent Tasks</h3>
+<% @tasks.each do |task| %>
+<div class="row">
+  <div class="panel col-md-6 col-md-offset-3" data-id="<%= task.id %>">
+    <em><p>Created on: <%= task.created_at %></p></em><br>
+    <p>ID: <%= task.id %></p><br>
+    <p>Description: <%= task.description %></p><br>
+    <p>Field worker: <a href="/workers/<%= task.worker.id %>"><%= task.worker.first_name %><%= task.worker.last_name %></p></a><br>
+    <p>Supervisor: <%= task.supervisor.first_name %> <%= task.supervisor.last_name %></p><br>
+  </div>
+<% end %>

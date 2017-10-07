@@ -1,6 +1,10 @@
 FactoryGirl.define do
   factory :worker do
-    first_name "MyString"
-    last_name "MyString"
+    sequence :first_name do |n|
+      "first name #{n}"
+    end
+    sequence :last_name do |n|
+     "last name #{n}"
+    end
   end
 end
