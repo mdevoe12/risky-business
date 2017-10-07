@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'workers#index'
+  root to: 'dashboard#show'
   namespace :api do
     namespace :v1 do
       namespace :workers do
