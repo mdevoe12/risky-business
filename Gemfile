@@ -25,7 +25,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'faker'
 # gem 'redis', '~> 3.0'
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 
 # Use Capistrano for deployment

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'workers#index'
+  root to: 'sessions#new'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
   namespace :api do
     namespace :v1 do
       namespace :workers do
