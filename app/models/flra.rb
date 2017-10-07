@@ -1,6 +1,7 @@
 class Flra < ApplicationRecord
   belongs_to :worker
   belongs_to :supervisor
+  belongs_to :category
   has_many :responses
 
   def self.most_recent
