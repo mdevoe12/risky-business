@@ -19,7 +19,7 @@ persons = CSV.parse(file)
 
   20.times do
     date = (Date.today - rand(0..30).to_i.days)
-    task = Task.create(
+    flra = .create(
       :description => Faker::Hipster.sentence,
       :worker_id => worker.id,
       :supervisor_id => supervisor.id,
