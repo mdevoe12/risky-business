@@ -1,6 +1,6 @@
 class Supervisor < ApplicationRecord
-  has_many :tasks
-  has_many :workers, through: :tasks
+  has_many :flras
+  has_many :workers, through: :flras
 
   def task_score_counts
     tasks.group("points").count

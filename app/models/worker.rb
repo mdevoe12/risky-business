@@ -1,5 +1,5 @@
 class Worker < ApplicationRecord
-  has_many :tasks
+  has_many :flras
 
   def tasks_by_date(date)
     tasks.where(created_at: (date.beginning_of_day..date.end_of_day))
