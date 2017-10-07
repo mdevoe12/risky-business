@@ -1,5 +1,5 @@
 class FollowupsController < ApplicationController
   def index
-    @tasks = current_user.followup_tasks
+    @flras = current_user.followup_flras
   end
 end
