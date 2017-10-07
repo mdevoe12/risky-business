@@ -7,8 +7,9 @@ class Supervisor < ApplicationRecord
   end
 
   def workers_by_date(date)
+    date_range = [date.beginning_of_day..date.end_of_day]
     workers.joins(:flras)
-          .where("flras.created_at = ?", date).distinct
+          .where("flras.created_at > ? AND flras.created_at < ?", date.midnight, date.end_of_day).distinct
   end
 
   def followup_flras
