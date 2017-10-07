@@ -4,6 +4,13 @@ start = Time.now
 supervisor = Supervisor.create(first_name: "Jon", last_name: "Snow")
 
 questions = ['What are you doing?', 'What could do go wrong?', 'How could it affect you?', 'How could it go wrong?']
+questions.each do |question|
+  Question.create(body: question)
+end
+
+Category.create(name: "Electrical")
+Category.create(name: "Transportation")
+Category.create(name: "Maintenance")
 
 counter = 1
 
@@ -25,18 +32,23 @@ persons = CSV.parse(file)
       :supervisor_id => supervisor.id,
       :points => rand(1..5),
       :worker_risk_score => rand(1..7),
+      :category_id => rand(1..3),
+      :notes => Faker::Hipster.sentence,
+      :follow_up_status => rand(1..2),
       :created_at => date,
       :updated_at => date
     )
 
-    questions.each do |question|
+    4.times do
+      i = 1
       Response.create(
-        :question_title => question,
+        :question_id => i,
         :body => Faker::Hipster.paragraph,
         :flra_id => flra.id,
         :created_at => date,
         :updated_at => date
       )
+      i += 1
     end
   end
 
@@ -47,18 +59,23 @@ persons = CSV.parse(file)
       :worker_id => worker.id,
       :supervisor_id => supervisor.id,
       :worker_risk_score => rand(1..7),
+      :category_id => rand(1..3),
+      :notes => Faker::Hipster.sentence,
+      :follow_up_status => rand(1..2),
       :created_at => date,
       :updated_at => date
     )
 
-    questions.each do |question|
+    4.times do
+      i = 1
       Response.create(
-        :question_title => question,
+        :question_id => i,
         :body => Faker::Hipster.paragraph,
         :flra_id => flra.id,
         :created_at => date,
         :updated_at => date
       )
+      i += 1
     end
   end
   puts "creating record #{counter}"
