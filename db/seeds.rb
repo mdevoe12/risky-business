@@ -19,7 +19,7 @@ persons = CSV.parse(file)
 
   20.times do
     date = (Date.today - rand(0..30).to_i.days)
-    flra = .create(
+    flra = Flra.create(
       :description => Faker::Hipster.sentence,
       :worker_id => worker.id,
       :supervisor_id => supervisor.id,
@@ -33,7 +33,7 @@ persons = CSV.parse(file)
       Response.create(
         :question_title => question,
         :body => Faker::Hipster.paragraph,
-        :task_id => task.id,
+        :flra_id => flra.id,
         :created_at => date,
         :updated_at => date
       )
@@ -42,7 +42,7 @@ persons = CSV.parse(file)
 
   20.times do
     date = (Date.today - rand(0..30).to_i.days)
-    task = Task.create(
+    flra = Flra.create(
       :description => Faker::Hipster.sentence,
       :worker_id => worker.id,
       :supervisor_id => supervisor.id,
@@ -55,7 +55,7 @@ persons = CSV.parse(file)
       Response.create(
         :question_title => question,
         :body => Faker::Hipster.paragraph,
-        :task_id => task.id,
+        :flra_id => flra.id,
         :created_at => date,
         :updated_at => date
       )
