@@ -55,16 +55,14 @@ persons = CSV.parse(file)
       :updated_at => date
     )
 
-    4.times do
-      i = 1
+    4.times do |i|
       Response.create(
-        :question_id => i,
+        :question_id => i + 1,
         :body => Faker::Hipster.paragraph,
         :flra_id => flra.id,
         :created_at => date,
         :updated_at => date
       )
-      i += 1
     end
   end
 
@@ -82,16 +80,14 @@ persons = CSV.parse(file)
       :updated_at => date
     )
 
-    4.times do
-      i = 1
+    4.times do |i|
       Response.create(
-        :question_id => i,
+        :question_id => i + 1,
         :body => Faker::Hipster.paragraph,
         :flra_id => flra.id,
         :created_at => date,
         :updated_at => date
       )
-      i += 1
     end
   end
   puts "creating record #{counter}"
