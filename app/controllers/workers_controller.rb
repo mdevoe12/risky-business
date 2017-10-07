@@ -2,7 +2,7 @@ class WorkersController < ApplicationController
 
   def show
     @worker = Worker.find(params[:id])
-    @tasks = @worker.tasks.where(points: nil)
+    @flras = @worker.flras.where(points: nil)
   end
 
   def index
