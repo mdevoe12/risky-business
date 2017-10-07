@@ -1,0 +1,28 @@
+<h3>Your Outstanding FLRAs</h3>
+<% current_user.outstanding_flras.each do |flra| %>
+<div class="row text-center">
+  <div class="panel col-md-5 col-md-offset-2" style="height:350px; overflow-y: scroll">
+    <h3>Worker Risk Score</h3>
+    <h3><%= flra.worker_risk_score %></h3>
+    <% flra.responses.reverse.each do |response| %>
+      <h3><%= response.question_title %></h3>
+      <p><%= response.body %></p>
+    <% end %>
+  </div>
+  <div class="panel col-md-3" style="height:350px" data-id="<%= flra.id %>">
+    <h3>How dangerous do you think this actually is?</h3>
+    <div class="slidecontainer">
+      <input type="range" min="1" max="7" value="4" class="slider risk-slider" id="myRange">
+      <span>4</span>
+    </div>
+    <h3>How well was this form filled out?</h3>
+    <div class="slidecontainer">
+      <input type="range" min="1" max="5" value="4" class="slider score-slider">
+      <span>4</span>
+    </div>
+    <br>
+    <br>
+    <a href="#" class="btn btn-primary score-button">Submit</a>
+  </div>
+</div>
+<% end %>

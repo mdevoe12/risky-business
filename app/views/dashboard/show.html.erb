@@ -1,20 +1,21 @@
 <div>
 
   <!-- Nav tabs -->
-  <ul class="nav nav-tabs nav-justified" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="todays-workers" role="tab" data-toggle="tab">Today's Workers</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="flras" role="tab" data-toggle="tab">Outstanding FLRAs</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="followups" role="tab" data-toggle="tab">Outstanding Follow Ups</a></li>
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#todays-workers" aria-controls="home" role="tab" data-toggle="tab">Today's Workers</a></li>
+    <li role="presentation"><a href="#outstanding-flras" aria-controls="profile" role="tab" data-toggle="tab">Outstanding FLRAs</a></li>
+    <li role="presentation"><a href="#outstanding-followups" aria-controls="messages" role="tab" data-toggle="tab">Outstanding Follow Ups</a></li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="todays-workers">
       <%= render :partial => "todays_workers" %>
-
     </div>
-    <div role="tabpanel" class="tab-pane" id="flras">...</div>
-    <div role="tabpanel" class="tab-pane" id="followups">...</div>
+    <div role="tabpanel" class="tab-pane" id="outstanding-flras">
+      <%= render :partial => "outstanding_flras" %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="outstanding-followups">jkkalsjd</div>
   </div>
 
 </div>
