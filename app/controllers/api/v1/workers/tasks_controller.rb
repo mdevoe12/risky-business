@@ -5,15 +5,14 @@ class Api::V1::Workers::TasksController < ApplicationController
   def create
     result = JSON.parse(response.request.body.string, symbolize_names: :true)
 
-    task = Task.create!(description: result[:Task_Type],
+    flra = Flra.create!(description: result[:Task_Type],
                           worker_id: result[:worker_id],
                       supervisor_id: result[:supervisor_id],
                   worker_risk_score: result[:Risk_Level])
-         task.responses.create(body: result[:Exact_Task])
-         task.responses.create(body: result[:Risk_Concerns])
-         task.responses.create(body: result[:description])
-         task.responses.create(body: result[:Mitigation])
-
+         flra.responses.create(body: result[:Exact_Task], question_id: 1)
+         flra.responses.create(body: result[:Risk_Concerns], question_id: 2)
+         flra.responses.create(body: result[:description], question_id: 3)
+         flra.responses.create(body: result[:Mitigation], question_id: 4)
   end
 
 end
