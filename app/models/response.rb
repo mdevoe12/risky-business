@@ -1,3 +1,4 @@
 class Response < ApplicationRecord
-  belongs_to :task
+  belongs_to :flra
+  belongs_to :question
 end
