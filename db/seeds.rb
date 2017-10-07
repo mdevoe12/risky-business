@@ -10,9 +10,23 @@ questions.each do |question|
   Question.create(body: question)
 end
 
-Category.create(name: "Electrical")
-Category.create(name: "Transportation")
+electrical = Category.create(name: "Electrical")
+transportation = Category.create(name: "Transportation")
+elec_controls = ["Lock Out/Tag Out", "Check for Locks"]
+elec_controls.each do |body|
+  Control.create!(category_id: electrical.id, body: body)
+end
+TopRisk.create(category_id: electrical.id, body: "Check Grounding")
+
+trans_controls = ["Pre-start Check", "Seatbelts", "Tires", "Horn", "Head Lights"]
+trans_controls.each do |body|
+  Control.create(category_id: transportation.id, body: body)
+end
+TopRisk.create(category_id: transportation.id, body: "Load Secured?")
+
 Category.create(name: "Maintenance")
+
+
 
 counter = 1
 
