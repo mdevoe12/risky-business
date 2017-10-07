@@ -13,7 +13,7 @@
       <%= render :partial => "todays_workers" %>
     </div>
     <div role="tabpanel" class="tab-pane" id="outstanding-flras">
-      <%= render :partial => "outstanding_flras" %>
+      <%= render partial: 'workers/form', collection: current_user.outstanding_flras, as: :flra %>
     </div>
     <div role="tabpanel" class="tab-pane" id="outstanding-followups">
       <%= render :partial => "outstanding_followups" %>

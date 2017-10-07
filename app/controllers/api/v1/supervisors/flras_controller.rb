@@ -1,4 +1,4 @@
-class Api::V1::Supervisors::TasksController < ApplicationController
+class Api::V1::Supervisors::FlrasController < ApplicationController
   def index
     date = Date.parse(params[:date])
     tasks = Worker.find(params[:worker_id]).tasks.where(created_at: (date.beginning_of_day..date.end_of_day))
@@ -9,7 +9,6 @@ class Api::V1::Supervisors::TasksController < ApplicationController
     flra = Flra.find(params[:id])
     flra.points = params[:points].to_i
     flra.super_risk_score = params[:risk].to_i
-    byebug
     flra.save!
     flra.calc_diff
   end

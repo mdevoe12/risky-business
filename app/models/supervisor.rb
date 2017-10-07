@@ -1,6 +1,7 @@
 class Supervisor < ApplicationRecord
   has_many :flras
   has_many :workers, through: :flras
+  belongs_to :manager
 
   def flra_score_counts
     flras.group("points").count
