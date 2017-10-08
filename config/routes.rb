@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         get '/:id/task_scores', to: 'task_scores#index'
       end
       namespace :supervisors do
-        get '/tasks/:worker_id', to: 'tasks#index'
+        get '/flras/:worker_id', to: 'flras#index'
         put '/flras/:id', to: 'flras#update'
       end
     end
