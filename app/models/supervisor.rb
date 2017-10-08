@@ -20,4 +20,8 @@ class Supervisor < ApplicationRecord
   def outstanding_flras
     flras.where(points: nil)
   end
+
+  def outstanding_flras_for_worker(worker)
+    flras.where(points: nil).where(worker: worker)
+  end
 end
