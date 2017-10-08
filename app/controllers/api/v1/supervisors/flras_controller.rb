@@ -11,5 +11,6 @@ class Api::V1::Supervisors::FlrasController < ApplicationController
     flra.super_risk_score = params[:risk].to_i
     flra.save!
     flra.calc_diff
+    flra.update_status
   end
 end

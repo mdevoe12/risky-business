@@ -14,7 +14,7 @@ class Supervisor < ApplicationRecord
   end
 
   def followup_flras
-    flras.where("risk_differential > ? OR points < ?", 1, 3)
+    flras.where("follow_up_status = ?", 1)
   end
 
   def outstanding_flras
