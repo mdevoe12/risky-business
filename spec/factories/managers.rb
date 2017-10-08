@@ -4,5 +4,6 @@ FactoryGirl.define do
     last_name "MyString"
     site nil
     profile_picture "MyString"
+    site
   end
 end
