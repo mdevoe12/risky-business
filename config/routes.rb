@@ -23,4 +23,5 @@ Rails.application.routes.draw do
 
   get '/support', to: 'support#index'
   get '/tasks', to: 'tasks#index'
+  resources :flras, only: [:show, :update]
 end
