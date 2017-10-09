@@ -1,7 +1,7 @@
 <div class='login'>
   <div class="container">
     <%= form_for :session, url: login_path do |f| %>
-      <%= f.text_field :user_id, class: 'form-control', placeholder: 'User ID'%>
+      <%= f.text_field :username, class: 'form-control', placeholder: 'User ID'%>
       <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %><br>
       <%= f.submit "Sign In", class: "btn btn-lg btn-primary btn-block" %>
     <% end %>

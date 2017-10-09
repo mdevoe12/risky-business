@@ -44,6 +44,7 @@ group :development, :test do
   gem 'rack_session_access'
   gem 'rspec-rails'
   gem 'pry'
+  gem 'shoulda-matchers'
 
 end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171007194848) do
+ActiveRecord::Schema.define(version: 20171009141211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(version: 20171007194848) do
     t.index ["category_id"], name: "index_flras_on_category_id"
     t.index ["supervisor_id"], name: "index_flras_on_supervisor_id"
     t.index ["worker_id"], name: "index_flras_on_worker_id"
+  end
+
+  create_table "logins", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "loginable_type"
+    t.bigint "loginable_id"
+    t.index ["loginable_type", "loginable_id"], name: "index_logins_on_loginable_type_and_loginable_id"
   end
 
   create_table "managers", force: :cascade do |t|
