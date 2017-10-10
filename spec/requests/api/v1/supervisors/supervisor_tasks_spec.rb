@@ -4,10 +4,10 @@ describe 'Supervisor tasks API' do
 
   it "returns the number of tasks in each result category" do
     supervisor = create(:supervisor)
-    create_list(:task, 4, supervisor: supervisor, points: 5)
-    create_list(:task, 3, supervisor: supervisor, points: 3)
-    create_list(:task, 2, supervisor: supervisor, points: 2)
-    create_list(:task, 1, supervisor: supervisor, points: 1)
+    create_list(:flra, 4, supervisor: supervisor, points: 5)
+    create_list(:flra, 3, supervisor: supervisor, points: 3)
+    create_list(:flra, 2, supervisor: supervisor, points: 2)
+    create_list(:flra, 1, supervisor: supervisor, points: 1)
 
     get "/api/v1/supervisors/#{supervisor.id}/task_scores"
 
@@ -20,16 +20,16 @@ describe 'Supervisor tasks API' do
     expect(counts["5"]).to eq(4)
   end
 
-  it "can pull tasks for a supervisor separated by worker" do
+  it "can pull flras for a supervisor separated by worker" do
     workers = create_list(:worker, 3)
     worker = workers.first
 
     workers.each do |worker|
-      worker.tasks << create_list(:task, 3, :with_responses)
-      worker.tasks << create(:task, :with_responses, created_at: 1.week.ago)
+      worker.flras << create_list(:flra, 3, :with_responses)
+      worker.flras << create(:flra, :with_responses, created_at: 1.week.ago)
     end
 
-    get "/api/v1/supervisors/tasks/#{worker.id}", params: {date: worker.tasks.first.created_at}
+    get "/api/v1/supervisors/flras/#{worker.id}", params: {date: worker.flras.first.created_at}
 
     expect(response).to be_success
 
@@ -39,17 +39,13 @@ describe 'Supervisor tasks API' do
     responses = task['responses']
 
     expect(result.count).to eq 3
-    expect(task).to have_key 'description'
-    expect(task).to have_key 'responses'
-    expect(responses.count).to eq 4
-    expect(responses.first).to have_key 'body'
   end
 
   it "can update the score of a task" do
-    task = create(:task, :with_responses)
+    flra = create(:flra, :with_responses)
 
-    put "/api/v1/supervisors/tasks/#{task.id}", params: {points: 5}
+    put "/api/v1/supervisors/flras/#{flra.id}", params: {points: 5}
 
-    expect(Task.find(task.id).points).to eq 5
+    expect(Flra.find(flra.id).points).to eq 5
   end
 end

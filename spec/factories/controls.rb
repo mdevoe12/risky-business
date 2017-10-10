@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :control do
     body "MyString"
-    categories nil
+    category
   end
 end
