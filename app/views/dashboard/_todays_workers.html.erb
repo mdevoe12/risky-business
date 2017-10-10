@@ -1,7 +1,7 @@
 <h3>Your Workers Today</h3>
 <section class="workers">
   <div class="row">
-    <% current_user.workers_by_date(Date.today).each do |worker| %>
+    <% current_user.workers_by_date(Time.now).each do |worker| %>
       <div class="col-sm-6 col-md-4">
         <a href="<%= worker_path(worker.id) %>">
           <div class="thumbnail">

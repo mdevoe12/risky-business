@@ -19,8 +19,8 @@ RSpec.feature "supervisor visits root" do
     today = Date.today
     another_day = Date.new(2017, 5, 11)
     create(:flra, worker: w1, supervisor: supervisor_1, created_at: another_day)
-    create(:flra, worker: w2, supervisor: supervisor_1, created_at: Time.now)
-    create(:flra, worker: w4, supervisor: supervisor_1, created_at: Time.now)
+    create(:flra, worker: w2, supervisor: supervisor_1)
+    create(:flra, worker: w4, supervisor: supervisor_1)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(supervisor_1)
 
