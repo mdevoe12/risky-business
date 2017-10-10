@@ -35,4 +35,15 @@ RSpec.feature "supervisor clicks on flra from follow up page" do
     expect(page).to have_content("Follow Up Resolved")
     expect(page).to_not have_link("Mark as Resolved")
   end
+
+  scenario "they can add notes" do
+    visit "/flras/#{@flra.id}"
+
+    click_on "Add Notes"
+
+    fill_in "notes", with: "new note!!"
+    click_on "Submit"
+
+    expect(page).to have_content("new note!!")
+  end
 end
