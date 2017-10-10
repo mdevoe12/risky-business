@@ -3,13 +3,16 @@ class SessionsController < ApplicationController
   end
 
   def create
-    login = Login.find_by(username: params[:session][:username])
-    if login && login.authenticate(params[:session][:password])
-      log_in(login)
-      if login.role == 'supervisor'
-        redirect_to supervisor_dashboard_path
+    login = Login.find_by(username: safe_params[:session][:username])
+    @user = login.loginable
+    if login && login.authenticate(safe_params[:session][:password])
+      log_in(@user)
+      if login.loginable_type == 'supervisor'
+        redirect_to supervisor_dashboard_path #does not exist yet
+      elsif login.loginable == 'manager'
+        redirect_to manager_dashboard_path #does not exist yet
       else
-        redirect_to manager_dashboard_path
+        redirect_to root_path
       end
     end
   end
@@ -17,6 +20,6 @@ class SessionsController < ApplicationController
   private
 
   def safe_params
-    params.require(:login).permit(:session)
+    params.permit(:session => {})
   end
 end
