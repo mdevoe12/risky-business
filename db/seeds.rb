@@ -1,3 +1,7 @@
+require 'database_cleaner'
+DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.clean
+
 require 'csv'
 start = Time.now
 
