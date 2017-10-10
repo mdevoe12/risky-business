@@ -21,7 +21,8 @@
       <td scope="row"><%= flra.category.name if flra.category %></td>
       <td scope="row"><%= flra.points %></td>
       <td scope="row"><%= flra.risk_differential %></td>
-      <td scope="row"><button type="button" class="btn btn-primary">Resolve</button></td>
+
+      <td scope="row"><%= link_to "Mark as Resolved", flra_path(flra, follow_up_status: "resolved"), method: :put, class: "btn btn-primary" %></td>
     </tr>
     <% end %>
 

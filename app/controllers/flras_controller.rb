@@ -10,7 +10,7 @@ class FlrasController < ApplicationController
   def update
     flra = Flra.find(params[:id])
     flra.update(flra_params)
-    redirect_to flra
+    redirect_back(fallback_location: root_path)
   end
 
   private
