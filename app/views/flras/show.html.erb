@@ -24,7 +24,9 @@
     <label>Supervisor Risk Score:</label> <%= @flra.super_risk_score %> <br><br>
     <label>Risk Differential:</label> <%= @flra.risk_differential %> <br><br>
     <p><label>Notes: </label> <%= @flra.notes %></p>
-    <%= link_to "Mark as Resolved", flra_path(@flra, follow_up_status: "resolved"), method: :put, class: "btn btn-primary" %>
+    <% if @flra.flagged? %>
+      <%= link_to "Mark as Resolved", flra_path(@flra, follow_up_status: "resolved"), method: :put, class: "btn btn-primary" %>
+    <% end %>
   </div>
 
 </div>
