@@ -23,10 +23,20 @@
     <label>Worker Risk Score: </label> <%= @flra.worker_risk_score %> <br><br>
     <label>Supervisor Risk Score:</label> <%= @flra.super_risk_score %> <br><br>
     <label>Risk Differential:</label> <%= @flra.risk_differential %> <br><br>
-    <p><label>Notes: </label> <%= @flra.notes %></p>
+    <p id="flra-notes"><label>Notes: </label> </p>
+    <div class="text-center">
+
+    <button type="button" name="button" class="btn btn-primary" id="add-notes">Add Notes</button><br><br>
+    <form class="form-group hidden" id="add-flra-notes">
+          <input type="hidden" name="flra_id" id ="flra-id" value= "<%= @flra.id %>" >
+          <textarea type="text" name="message" class="form-control" id="note-body"> <%= @flra.notes %>  </textarea><br>
+          <button type="button" class="btn btn-primary" id="submit-note">Submit</button>
+    </form>
     <% if @flra.flagged? %>
       <%= link_to "Mark as Resolved", flra_path(@flra, follow_up_status: "resolved"), method: :put, class: "btn btn-primary" %>
     <% end %>
+    <br><br>
+  </div>
   </div>
 
 </div>

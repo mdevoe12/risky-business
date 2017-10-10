@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       end
       namespace :supervisors do
         get '/flras/:worker_id', to: 'flras#index'
+        get '/flra/:id', to: 'flras#show'
         put '/flras/:id', to: 'flras#update'
       end
     end

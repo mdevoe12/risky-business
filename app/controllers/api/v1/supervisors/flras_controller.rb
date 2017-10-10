@@ -5,6 +5,10 @@ class Api::V1::Supervisors::FlrasController < ApplicationController
     render json: tasks
   end
 
+  def show
+    render json: Flra.find(params[:id])
+  end
+
   def update
     flra = Flra.find(params[:id])
     flra.update(flra_params)
