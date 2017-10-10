@@ -7,10 +7,12 @@ class Api::V1::Supervisors::FlrasController < ApplicationController
 
   def update
     flra = Flra.find(params[:id])
-    flra.points = params[:points].to_i
-    flra.super_risk_score = params[:risk].to_i
-    flra.save!
-    flra.calc_diff
-    flra.update_status
+    flra.update(flra_params)
+  end
+
+  private
+
+  def flra_params
+    params.permit(:super_risk_score, :points, :notes)
   end
 end
