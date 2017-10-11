@@ -3,6 +3,7 @@ class Flra < ApplicationRecord
   belongs_to :supervisor
   belongs_to :category
   has_many :responses
+  has_many :questions, through: :responses
 
   enum follow_up_status: [:not_flagged, :flagged, :resolved]
 
