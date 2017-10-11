@@ -9,7 +9,15 @@ class Worker < ApplicationRecord
     flras.average(:points)
   end
 
+  def outstanding_flras(id)
+    flras.includes(:questions, :responses).where(points: nil, supervisor_id: id)
+  end
+
   def forms_to_follow_up
-    flras.where('follow_up_status = ?', 1)
+    flras.includes(:category).where('follow_up_status = ?', 1)
+  end
+
+  def flra_score_counts
+    flras.group("points").count
   end
 end
