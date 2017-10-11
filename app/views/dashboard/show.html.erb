@@ -1,5 +1,1 @@
-<% if current_user.class == Supervisor %>
-  <%= render partial: 'supervisor' %>
-<% else %>
-  <%= render partial: 'manager' %>
-<% end %>
+<%= render partial: current_user.class.to_s %>
