@@ -34,7 +34,7 @@ var updateScore = function(id, score, button, riskScore) {
   return $.ajax({
     url: '/api/v1/supervisors/flras/' + id,
     method: 'PUT',
-    data: {points: score, risk: riskScore},
+    data: {points: score, super_risk_score: riskScore},
     headers: {
       'X-Transaction': 'POST Example',
       'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
