@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   root to: 'sessions#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
-
+  get '/dashboard', to: 'dashboard#show'
+  
   namespace :api do
     namespace :v1 do
       namespace :workers do
@@ -16,7 +17,8 @@ Rails.application.routes.draw do
       end
 
       namespace :supervisors do
-        get '/tasks/:worker_id', to: 'tasks#index'
+        get '/flras/:worker_id', to: 'flras#index'
+        get '/flra/:id', to: 'flras#show'
         put '/flras/:id', to: 'flras#update'
       end
     end
@@ -29,4 +31,5 @@ Rails.application.routes.draw do
 
   get '/support', to: 'support#index'
   get '/tasks', to: 'tasks#index'
+  resources :flras, only: [:show, :update]
 end

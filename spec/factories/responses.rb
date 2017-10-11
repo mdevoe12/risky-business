@@ -1,6 +1,9 @@
 FactoryGirl.define do
   factory :response do
-    body { Faker::Hacker.say_something_smart }
-    task
+    sequence :body do |n|
+      "response body #{n}"
+    end
+    flra
+    question
   end
 end
