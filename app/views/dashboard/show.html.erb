@@ -1,23 +1,5 @@
-<div>
-
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs nav-justified" role="tablist">
-    <li role="presentation" class="active"><a href="#todays-workers" aria-controls="home" role="tab" data-toggle="tab">Today's Workers</a></li>
-    <li role="presentation"><a href="#outstanding-flras" aria-controls="profile" role="tab" data-toggle="tab">Outstanding FLRAs</a></li>
-    <li role="presentation"><a href="#outstanding-followups" aria-controls="messages" role="tab" data-toggle="tab">Outstanding Follow Ups</a></li>
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="todays-workers">
-      <%= render :partial => "todays_workers" %>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="outstanding-flras">
-      <%= render partial: 'workers/form', collection: current_user.outstanding_flras, as: :flra %>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="outstanding-followups">
-      <%= render :partial => "outstanding_followups" %>
-    </div>
-  </div>
-
-</div>
+<% if current_user.class == Supervisor %>
+  <%= render partial: 'supervisor' %>
+<% else %>
+  <%= render partial: 'manager' %>
+<% end %>

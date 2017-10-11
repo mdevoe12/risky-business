@@ -4,12 +4,17 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   # before_action :authorize!
 
-  def log_in(user)
+  def log_in(user, login)
     session[:user_id] = user.id
+    session[:role] = login.loginable_type
   end
 
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
+    if session[:role] == "Supervisor"
+      @current_user ||= Supervisor.find_by(id: session[:user_id])
+    else
+      @current_user ||= Manager.find_by(id: session[:user_id])
+    end
   end
 
   def logged_in?
