@@ -4,6 +4,8 @@ class Flra < ApplicationRecord
   belongs_to :category
   has_many :responses
 
+  enum follow_up_status: [:untagged, :tagged, :followed_up]
+
   def self.most_recent
     Flra.all.order("created_at DESC").limit(5)
   end

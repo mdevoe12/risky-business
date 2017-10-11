@@ -2,6 +2,6 @@
 
 <div data-worker="<%= @worker.id %>"></div>
 
-<h3>Average Form Score: <span class="average"></span></h3>
+<%= render partial: 'contact_card' %>
 
 <%= render partial: 'form', collection: @flras, as: :flra %>
