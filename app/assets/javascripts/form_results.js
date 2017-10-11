@@ -160,7 +160,7 @@ function workerScores() {
           '#C4900F',
         ],
   title: {
-      text: 'Forms Data'
+      text: 'Performance Breakdown'
   },
   tooltip: {
       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
