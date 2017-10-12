@@ -66,4 +66,54 @@ $(document).ready(function(){
   })
 }
 });
+
+$.ajax({
+  type: 'GET',
+  url: '/api/v1/managers/dashboard',
+  success: function(data) {
+    flras = data['flras']
+    // debugger
+    Highcharts.chart('flra-scores', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,
+            plotShadow: false
+        },
+        title: {
+            text: 'October<br>FLRA Scores',
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 40
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                dataLabels: {
+                    enabled: true,
+                    distance: -50,
+                    style: {
+                        fontWeight: 'bold',
+                        color: 'white'
+                    }
+                },
+                startAngle: -90,
+                endAngle: 90,
+                center: ['50%', '75%']
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            innerSize: '50%',
+            data: [
+                ['Satisfactory', flras.satisfactory],
+                ['Needs Improvement', flras.needs_improvement],
+            ]
+        }]
+    });
+ }
+})
+
 });

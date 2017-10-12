@@ -6,8 +6,12 @@ require 'csv'
 start = Time.now
 
 site = Site.create(name: "Salt Lake City", latitude: 40.758701, longitude: -111.876183)
-manager = Manager.create(first_name: "James", last_name: "Daniels", site_id: site.id)
+manager = Manager.create!(first_name: "James", last_name: "Daniels", site_id: site.id)
+Login.create(username: "james123", password: "password", loginable_id: manager.id, loginable_type: "Manager")
 supervisor = Supervisor.create(first_name: "Jon", last_name: "Snow", manager_id: manager.id)
+Login.create(username: "jon123", password: "password", loginable_id: supervisor.id, loginable_type: "Supervisor")
+
+
 
 questions = ['What are you doing?', 'What could do go wrong?', 'How could it affect you?', 'How could it go wrong?']
 questions.each do |question|

@@ -22,6 +22,10 @@ Rails.application.routes.draw do
         get '/flra/:id', to: 'flras#show'
         put '/flras/:id', to: 'flras#update'
       end
+
+      namespace :managers do
+        resources :dashboard
+      end
     end
   end
 
