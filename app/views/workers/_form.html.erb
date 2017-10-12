@@ -1,6 +1,6 @@
 <div class="row form hidden">
   <div class="panel col-md-12" >
-    <h2 class="text-center">FLRA #<%= flra.id %></h2>
+    <h2 class="text-center">FLRA #<%= "#{flra.id} Completed By #{flra.worker.first_name + flra.worker.last_name}" %></h2>
     <p class="text-center">Submitted on <%= flra.created_at.to_formatted_s(:long_ordinal) %> </p>
     <div class="col-md-8">
     <h4 class="text-center">Form Submission</h4>

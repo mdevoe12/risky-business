@@ -24,4 +24,8 @@ class Supervisor < ApplicationRecord
   def outstanding_flras_for_worker(worker)
     flras.where(points: nil).where(worker: worker)
   end
+
+  def form_counts
+    {forms: outstanding_flras.count, followups: followup_flras.count}
+  end
 end
