@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @worker.forms_to_follow_up.each do |flra| %>
+      <% @worker.forms_to_follow_up(current_user.id).each do |flra| %>
       <tr>
         <td scope="row"><%= link_to flra.created_at, flra %></td>
         <td scope="row"><%= "#{flra.worker.first_name} #{flra.worker.last_name}" %></td>

@@ -1,12 +1,12 @@
 
-<div data-worker="<%= @worker.id %>"></div>
+<div data-worker="<%= @worker.id %>" data-super="<%= current_user.id %>"></div>
 
 <%= render partial: 'contact_card' %>
 
 <div class="row" style="background-color: white">
   <ul class="nav nav-tabs nav-justified" role="tablist">
-    <li role="presentation" class="active"><a href="#outstanding-flras" aria-controls="profile" role="tab" data-toggle="tab">Outstanding FLRAs</a></li>
-    <li role="presentation"><a href="#outstanding-followups" aria-controls="messages" role="tab" data-toggle="tab">Outstanding Follow Ups</a></li>
+    <li role="presentation" class="active"><a href="#outstanding-flras" aria-controls="profile" role="tab" data-toggle="tab">Outstanding FLRAs (<span class='form-count'></span>)</a></li>
+    <li role="presentation"><a href="#outstanding-followups" aria-controls="messages" role="tab" data-toggle="tab">Outstanding Follow Ups (<span class='follow-count'></span>)</a></li>
   </ul>
 </div>
 

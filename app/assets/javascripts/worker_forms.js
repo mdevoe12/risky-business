@@ -30,6 +30,32 @@ var fetchAverage = function(workerId) {
   })
 }
 
+function updateCounts() {
+  let worker_id = $('[data-worker]').data().worker
+  let super_id = $('[data-worker]').data().super
+  $.ajax({
+    url: `/api/v1/workers/${worker_id}/flra-counts/`,
+    method: 'GET',
+    data: {super_id: super_id},
+    success: function(data) {
+      $('.form-count').text(data.forms)
+      $('.follow-count').text(data.followups)
+    }
+  })
+}
+
+function updateSuperCounts() {
+  let super_id = $('[data-id]').data().id
+  $.ajax({
+    url: `/api/v1/supervisors/${super_id}/flra-counts/`,
+    method: 'GET',
+    success: function(data) {
+      $('.super-form-count').text(data.forms)
+      $('.super-follow-count').text(data.followups)
+    }
+  })
+}
+
 var updateScore = function(id, score, button, riskScore) {
   return $.ajax({
     url: '/api/v1/supervisors/flras/' + id,
@@ -45,6 +71,7 @@ var updateScore = function(id, score, button, riskScore) {
       });
       fetchAverage($('[data-worker]').data().worker);
       workerScores();
+      updateCounts();
     },
     failure: function(error) {
       console.error(error);

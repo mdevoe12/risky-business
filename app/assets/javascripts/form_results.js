@@ -3,11 +3,15 @@ $(document).ready(function(){
     var workerId = $('[data-worker]').data().worker;
     fetchAverage(workerId);
     workerScores();
-  };
+    updateCounts();
+  } else {
+    updateSuperCounts();
+  }
 
   scoreListener();
   slideListener();
   revealForm();
+
 
   $.ajax({
     type: 'GET',
