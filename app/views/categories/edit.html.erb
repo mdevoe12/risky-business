@@ -1,1 +1,20 @@
-<h2>Manage Categories</h2>
+<div class="text-center">
+
+<h1>Manage FLRA Inputs</h1><br>
+</div>
+  <div class="container-fluid text-center">
+    <h3>Electrical</h3>
+      <div class="dropdown col-md-2 col-md-offset-5">
+
+        <button class="btn btn-default dropdown-toggle" type="button" id="categories-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Job Categories
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu text-center" aria-labelledby="categories-dropdown">
+          <% @categories.each do |category| %>
+            <li><a><%= category.name %></a></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
