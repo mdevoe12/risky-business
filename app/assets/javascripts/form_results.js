@@ -74,18 +74,21 @@ $.ajax({
     flras = data['flras']
     supervisors = data['supervisors']
     renderFlrasChart(flras)
-    supervisors.forEach(function(supervisor) {
-      // debugger
-    $("#supervisors-header").after(
-      `<tr>
-          <td> ${supervisor.Name} </td>
-          <td> ${supervisor.Reviewed} </td>
-          <td> ${supervisor.Outstanding}</td>
-        </tr> `
-    );
-  })
- }
+    appendSupervisorTable(supervisors)
+  }
 })
+
+function appendSupervisorTable(supervisors) {
+  supervisors.forEach(function(supervisor) {
+  $("#supervisors-header").after(
+    `<tr>
+        <td> ${supervisor.Name} </td>
+        <td> ${supervisor.Reviewed} </td>
+        <td> ${supervisor.Outstanding}</td>
+      </tr> `
+  );
+})
+}
 
 function renderFlrasChart(flras) {
   Highcharts.chart('flra-scores', {
