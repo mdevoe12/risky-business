@@ -57,6 +57,7 @@ function updateSuperCounts() {
 }
 
 var updateScore = function(id, score, button, riskScore) {
+  let form = button.parent().parent().parent().parent()
   return $.ajax({
     url: '/api/v1/supervisors/flras/' + id,
     method: 'PUT',
@@ -66,9 +67,14 @@ var updateScore = function(id, score, button, riskScore) {
       'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
     },
     success: function(data) {
-      button.parent().parent().parent().parent().fadeOut('slow', function() {
-        button.parent().parent().parent().parent().next().removeClass('hidden');
-      });
+      // button.parent().parent().parent().parent().fadeOut('slow', function() {
+      //   button.parent().parent().parent().parent().next().removeClass('hidden');
+      // });
+      form.animate({'left': '-=2000px'}, 300, function() {
+        form.hide()
+        form.next().removeClass('hidden')
+      })
+      // form.next().animate({'top': '-=372px'}, {queue: false, duration: 300})
       fetchAverage($('[data-worker]').data().worker);
       workerScores();
       updateCounts();
