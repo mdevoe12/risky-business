@@ -8,4 +8,8 @@ class Worker < ApplicationRecord
   def average_form_score
     flras.average(:points)
   end
+
+  def forms_to_follow_up
+    flras.where('follow_up_status = ?', 1)
+  end
 end
