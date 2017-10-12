@@ -1,10 +1,20 @@
 <div class="title-show"><h2>FLRAs for <%= @worker.first_name %></h2></div>
+<%= tag :div, class: "supervisor_information", data: {id: current_user.id} %>
 
 <div data-worker="<%= @worker.id %>"></div>
 
 <%= render partial: 'contact_card' %>
 
-<%= render partial: 'form', collection: @flras, as: :flra %>
+<ul class="nav nav-tabs nav-justified" role="tablist">
+  <li role="presentation" class="active"><a href="#outstanding-flras" aria-controls="profile" role="tab" data-toggle="tab">Outstanding FLRAs</a></li>
+  <li role="presentation"><a href="#outstanding-followups" aria-controls="messages" role="tab" data-toggle="tab">Outstanding Follow Ups</a></li>
+</ul>
 
-<h3>Average Form Score: <span class="average"></span></h3>
-<%= render partial: 'form', collection: current_user.outstanding_flras_for_worker(@worker), as: :flra %>
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="outstanding-flras">
+    <%= render partial: 'form', collection: @worker.outstanding_flras(current_user.id), as: :flra %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="outstanding-followups">
+    <%= render :partial => "outstanding_followups" %>
+  </div>
+</div>
