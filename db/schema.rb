@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20171007194848) do
     t.integer "risk_differential"
     t.bigint "category_id"
     t.text "notes"
-    t.integer "follow_up_status"
+    t.integer "follow_up_status", default: 0
     t.index ["category_id"], name: "index_flras_on_category_id"
     t.index ["supervisor_id"], name: "index_flras_on_supervisor_id"
     t.index ["worker_id"], name: "index_flras_on_worker_id"

@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
-  root to: 'workers#index'
+  root to: 'dashboard#show'
   namespace :api do
     namespace :v1 do
       namespace :workers do
         resources :tasks, only: [:create]
-
+        get '/:id/task_scores', to: 'task_scores#index'
         get '/:id/average', to: 'average#show'
       end
       namespace :supervisors, only: [] do
         get '/:id/task_scores', to: 'task_scores#index'
       end
       namespace :supervisors do
-        get '/tasks/:worker_id', to: 'tasks#index'
+        get '/flras/:worker_id', to: 'flras#index'
+        get '/flra/:id', to: 'flras#show'
         put '/flras/:id', to: 'flras#update'
       end
     end
@@ -23,4 +24,5 @@ Rails.application.routes.draw do
 
   get '/support', to: 'support#index'
   get '/tasks', to: 'tasks#index'
+  resources :flras, only: [:show, :update]
 end

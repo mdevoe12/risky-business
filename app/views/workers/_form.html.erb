@@ -1,25 +1,48 @@
-<div class="row text-center hidden">
-  <div class="panel col-md-5 col-md-offset-2" style="height:350px; overflow-y: scroll">
-    <h3>Worker Risk Score</h3>
-    <h3><%= flra.worker_risk_score %></h3>
+<div class="row form hidden">
+  <div class="panel col-md-12" >
+    <h2 class="text-center">FLRA #<%= flra.id %></h2>
+    <p class="text-center">Submitted on <%= flra.created_at.to_formatted_s(:long_ordinal) %> </p>
+    <p class="text-center">Worker: <%= "#{flra.worker.first_name} #{flra.worker.last_name}" %></p>
+    <div class="col-md-8">
+    <h4 class="text-center">Form Submission</h4>
+    <label>Task Description: </label>  <%= flra.description %><br>
     <% flra.responses.reverse.each do |response| %>
-      <h3><%= response.question.body %></h3>
+    <br>
+      <label><%= response.question.body %></label>
       <p><%= response.body %></p>
     <% end %>
   </div>
-  <div class="panel col-md-3" style="height:350px" data-id="<%= flra.id %>">
-    <h3>How dangerous do you think this actually is?</h3>
-    <div class="slidecontainer">
-      <input type="range" min="1" max="7" value="4" class="slider risk-slider" id="myRange">
-      <span>4</span>
+  <div class="col-md-4">
+    <h4 class ="text-center">Results and Follow Up</h4><br>
+    <% if flra.flagged? %>
+      <label><i class="fa fa-flag" aria-hidden="true"></i> Flagged for Follow Up</label><br><br>
+      <% elsif flra.resolved? %>
+      <label><i class="fa fa-check-circle-o" aria-hidden="true"></i> Follow Up Resolved</label><br><br>
+    <% end %>
+    <label>Worker Risk Score: </label> <%= flra.worker_risk_score %> <br><br>
+    <p id="flra-notes"><label>Notes: </label> </p>
+    <button type="button" name="button" class="btn btn-primary" id="add-notes">Add Notes</button><br><br>
+    <form class="form-group hidden" id="add-flra-notes">
+          <input type="hidden" name="flra_id" id ="flra-id" value= "<%= flra.id %>" >
+          <textarea type="text" name="message" class="form-control" id="note-body"> <%= flra.notes %>  </textarea><br>
+          <button type="button" class="btn btn-primary" id="submit-note">Submit</button>
+    </form>
+    <div class="text-center" data-id="<%= flra.id %>">
+      <h4>How dangerous do you think this actually is?</h4>
+      <div class="slidecontainer">
+        <input type="range" min="1" max="7" value="4" class="slider risk-slider" id="myRange">
+        <span>4</span>
+      </div>
+      <h4>How well was this form filled out?</h4>
+      <div class="slidecontainer">
+        <input type="range" min="1" max="5" value="4" class="slider score-slider">
+        <span>4</span>
+      </div>
+      <br>
+      <br>
+      <a href="#" class="btn btn-primary score-button">Submit</a>
     </div>
-    <h3>How well was this form filled out?</h3>
-    <div class="slidecontainer">
-      <input type="range" min="1" max="5" value="4" class="slider score-slider">
-      <span>4</span>
-    </div>
-    <br>
-    <br>
-    <a href="#" class="btn btn-primary score-button">Submit</a>
   </div>
+  </div>
+
 </div>

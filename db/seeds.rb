@@ -1,3 +1,7 @@
+require 'database_cleaner'
+DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.clean
+
 require 'csv'
 start = Time.now
 
@@ -37,7 +41,8 @@ persons = CSV.parse(file)
   random_person = persons.sample
   worker = Worker.create(
     :first_name => random_person[0].split(' ')[0],
-    :last_name => random_person[0].split(' ')[1]
+    :last_name => random_person[0].split(' ')[1],
+    profile_picture: random_person[1]
   )
 
   20.times do
@@ -50,9 +55,7 @@ persons = CSV.parse(file)
       :worker_risk_score => rand(1..7),
       :category_id => rand(1..3),
       :notes => Faker::Hipster.sentence,
-      :follow_up_status => rand(1..2),
-      :created_at => date,
-      :updated_at => date
+      :follow_up_status => rand(1..2)
     )
 
     4.times do |i|
