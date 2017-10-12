@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get '/insights', to: 'insights#index'
   resources :workers, only: [:index, :show]
+  resources :categories, only: [:edit, :update]
 
   get '/support', to: 'support#index'
   get '/tasks', to: 'tasks#index'
