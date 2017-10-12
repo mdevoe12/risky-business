@@ -6,7 +6,7 @@ class Worker < ApplicationRecord
   end
 
   def average_form_score
-    flras.average(:points)
+    flras.average(:points).round(2)
   end
 
   def outstanding_flras(super_id)
