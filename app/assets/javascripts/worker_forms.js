@@ -71,9 +71,9 @@ var updateScore = function(id, score, button, riskScore) {
         form.hide()
         form.next().removeClass('hidden')
       })
-      fetchAverage($('[data-worker]').data().worker);
-      workerScores();
       if (document.URL.includes('worker')) {
+        fetchAverage($('[data-worker]').data().worker);
+        workerScores()
         updateCounts()
       } else {
         updateSuperCounts()
