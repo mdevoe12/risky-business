@@ -1,30 +1,30 @@
-<div class="container">
+
+<div class="row" style="background-color: white">
   <h3>FLRAs Flagged for Follow Up</h3><br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Submission Date</th>
+        <th>Worker</th>
+        <th>Task Type</th>
+        <th>Quality Score</th>
+        <th>Risk Score Differential</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @worker.forms_to_follow_up.each do |flra| %>
+      <tr>
+        <td scope="row"><%= link_to flra.created_at, flra %></td>
+        <td scope="row"><%= "#{flra.worker.first_name} #{flra.worker.last_name}" %></td>
+        <td scope="row"><%= flra.category.name if flra.category %></td>
+        <td scope="row"><%= flra.points %></td>
+        <td scope="row"><%= flra.risk_differential %></td>
+
+        <td scope="row"><%= link_to "Mark as Resolved", flra_path(flra, follow_up_status: "resolved"), method: :put, class: "btn btn-primary" %></td>
+      </tr>
+      <% end %>
+
+    </tbody>
+  </table>
 </div>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Submission Date</th>
-      <th>Worker</th>
-      <th>Task Type</th>
-      <th>Quality Score</th>
-      <th>Risk Score Differential</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @worker.forms_to_follow_up.each do |flra| %>
-    <tr>
-      <td scope="row"><%= link_to flra.created_at, flra %></td>
-      <td scope="row"><%= "#{flra.worker.first_name} #{flra.worker.last_name}" %></td>
-      <td scope="row"><%= flra.category.name if flra.category %></td>
-      <td scope="row"><%= flra.points %></td>
-      <td scope="row"><%= flra.risk_differential %></td>
-
-      <td scope="row"><%= link_to "Mark as Resolved", flra_path(flra, follow_up_status: "resolved"), method: :put, class: "btn btn-primary" %></td>
-    </tr>
-    <% end %>
-
-  </tbody>
-</table>

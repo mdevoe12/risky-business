@@ -1,20 +1,21 @@
-<div class="title-show"><h2>FLRAs for <%= @worker.first_name %></h2></div>
-<%= tag :div, class: "supervisor_information", data: {id: current_user.id} %>
 
 <div data-worker="<%= @worker.id %>"></div>
 
 <%= render partial: 'contact_card' %>
 
-<ul class="nav nav-tabs nav-justified" role="tablist">
-  <li role="presentation" class="active"><a href="#outstanding-flras" aria-controls="profile" role="tab" data-toggle="tab">Outstanding FLRAs</a></li>
-  <li role="presentation"><a href="#outstanding-followups" aria-controls="messages" role="tab" data-toggle="tab">Outstanding Follow Ups</a></li>
-</ul>
+<div class="row" style="background-color: white">
+  <ul class="nav nav-tabs nav-justified" role="tablist">
+    <li role="presentation" class="active"><a href="#outstanding-flras" aria-controls="profile" role="tab" data-toggle="tab">Outstanding FLRAs</a></li>
+    <li role="presentation"><a href="#outstanding-followups" aria-controls="messages" role="tab" data-toggle="tab">Outstanding Follow Ups</a></li>
+  </ul>
+</div>
+
 
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane active" id="outstanding-flras">
     <%= render partial: 'form', collection: @worker.outstanding_flras(current_user.id), as: :flra %>
   </div>
-  <div role="tabpanel" class="tab-pane" id="outstanding-followups">
+  <div role="tabpanel" class="tab-pane" id="outstanding-followups" style="background-color: white">
     <%= render :partial => "outstanding_followups" %>
   </div>
 </div>
