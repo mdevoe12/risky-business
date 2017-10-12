@@ -17,6 +17,8 @@ Rails.application.routes.draw do
         get '/flra/:id', to: 'flras#show'
         put '/flras/:id', to: 'flras#update'
       end
+
+      resources :flras, only: :update
     end
   end
   get '/followups', to: 'followups#index'

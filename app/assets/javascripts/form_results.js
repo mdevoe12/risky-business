@@ -7,7 +7,7 @@ $(document).ready(function(){
   } else {
     updateSuperCounts();
   }
-
+  resolvedListener();
   scoreListener();
   slideListener();
   revealForm();

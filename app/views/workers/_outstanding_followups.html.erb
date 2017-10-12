@@ -14,14 +14,14 @@
     </thead>
     <tbody>
       <% @worker.forms_to_follow_up(current_user.id).each do |flra| %>
-      <tr>
+      <tr class="unresolved-row">
         <td scope="row"><%= link_to flra.created_at, flra %></td>
         <td scope="row"><%= "#{flra.worker.first_name} #{flra.worker.last_name}" %></td>
         <td scope="row"><%= flra.category.name if flra.category %></td>
         <td scope="row"><%= flra.points %></td>
         <td scope="row"><%= flra.risk_differential %></td>
 
-        <td scope="row"><%= link_to "Mark as Resolved", flra_path(flra, follow_up_status: "resolved"), method: :put, class: "btn btn-primary" %></td>
+        <td scope="row" data-formid="<%= flra.id %>"><%= link_to "Mark as Resolved", '#', class: "btn btn-primary resolved-button" %></td>
       </tr>
       <% end %>
 
