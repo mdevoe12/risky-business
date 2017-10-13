@@ -16,14 +16,18 @@ class Supervisor < ApplicationRecord
   end
 
   def followup_flras
-    flras.where("follow_up_status = ?", 1)
+    flras.includes(:category, :worker).where("follow_up_status = ?", 1)
   end
 
   def outstanding_flras
-    flras.where(points: nil)
+    flras.includes(:responses, :questions).where(points: nil)
   end
 
   def outstanding_flras_for_worker(worker)
     flras.where(points: nil).where(worker: worker)
+  end
+
+  def form_counts
+    {forms: outstanding_flras.count, followups: followup_flras.count}
   end
 end
