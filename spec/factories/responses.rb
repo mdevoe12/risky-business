@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :response do
-    sequence :body { |n| "response body #{n}" }
+    sequence :body do |n|
+      "response body #{n}"
+    end
     flra
     question
   end
