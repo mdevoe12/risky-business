@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :workers do
         resources :tasks, only: [:create]
-
+        get '/:id/task_scores', to: 'task_scores#index'
         get '/:id/average', to: 'average#show'
       end
       namespace :supervisors, only: [] do

@@ -7,7 +7,6 @@ end
 
 
 gem 'rails', '~> 5.1.4'
-gem 'pry'
 gem 'figaro'
 gem 'sidekiq'
 gem 'active_model_serializers'
@@ -30,7 +29,6 @@ gem 'faker'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'jquery-rails'
 gem 'font-awesome-sass'
 
 group :development, :test do

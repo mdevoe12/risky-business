@@ -5,6 +5,10 @@ var slideListener = function() {
   })
 };
 
+function revealForm() {
+  $('div.row.form').first().removeClass('hidden');
+}
+
 var scoreListener = function () {
   $('.score-button').click(function(event) {
     event.preventDefault();
@@ -36,8 +40,11 @@ var updateScore = function(id, score, button, riskScore) {
       'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
     },
     success: function(data) {
-      button.parent().parent().fadeOut('slow');
+      button.parent().parent().parent().parent().fadeOut('slow', function() {
+        button.parent().parent().parent().parent().next().removeClass('hidden');
+      });
       fetchAverage($('[data-worker]').data().worker);
+      workerScores();
     },
     failure: function(error) {
       console.error(error);
