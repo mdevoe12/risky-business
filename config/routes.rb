@@ -29,6 +29,7 @@ Rails.application.routes.draw do
         post '/:id/risks', to: 'risks#create'
         get '/:id/controls', to: 'controls#index'
         post '/:id/controls', to: 'controls#create'
+        get '/:id/risk_responses', to: 'risk_responses#index'
       end
       namespace :managers do
         resources :dashboard

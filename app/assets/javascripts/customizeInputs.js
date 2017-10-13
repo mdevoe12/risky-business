@@ -38,6 +38,21 @@ function addInput() {
   })
 }
 
+function renderRecentRisks(){
+  var categoryId = $('.category_information').data('id');
+  var categoryName = $('.category_information').data('name');
+    $.ajax({
+    type: "GET",
+    url: "/api/v1/categories/" + categoryId + "/" + inputType.toLowerCase(),
+    success: function(inputs){
+      $('#current-' + inputType.toLowerCase() + '-table').append('<h3 class="text-center">Recently Submitted Risks for' + categoryName '</h3>'
+                        + "<table class='table table-bordered'><tbody>"
+                        + generateInputRows(inputs)
+                        + "</tbody></table>")
+    }
+  })
+}
+
 function generateInputRows(inputs){
   var rows = ""
   $.each(inputs, function(index, input){
