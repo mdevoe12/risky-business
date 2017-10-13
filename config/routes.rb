@@ -24,7 +24,13 @@ Rails.application.routes.draw do
         get '/flra/:id', to: 'flras#show'
         put '/flras/:id', to: 'flras#update'
       end
-
+      namespace :categories do
+        get '/:id/risks', to: 'risks#index'
+        post '/:id/risks', to: 'risks#create'
+        get '/:id/controls', to: 'controls#index'
+        post '/:id/controls', to: 'controls#create'
+        get '/:id/risk_responses', to: 'risk_responses#index'
+      end
       namespace :managers do
         resources :dashboard
       end
@@ -36,6 +42,7 @@ Rails.application.routes.draw do
 
   get '/insights', to: 'insights#index'
   resources :workers, only: [:index, :show]
+  resources :categories, only: [:edit, :update]
 
   get '/support', to: 'support#index'
   get '/tasks', to: 'tasks#index'

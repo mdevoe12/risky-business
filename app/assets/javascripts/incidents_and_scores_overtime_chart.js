@@ -1,4 +1,5 @@
 function incidentScoresTime() {
+  if($('div').is('#incidents-scores-time')){
   Highcharts.chart('incidents-scores-time', {
       title: {
           text: '2017 Incidents and FLRA Scores Trends'
@@ -71,4 +72,5 @@ function incidentScoresTime() {
           }
       }]
   });
+}
 }
