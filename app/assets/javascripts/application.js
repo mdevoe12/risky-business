@@ -25,11 +25,13 @@ $(document).ready(function(){
   } else if ($('[data-id]').length > 0) {
     updateSuperCounts();
   }
-  
+
   setListeners();
   revealForm();
   superTaskScores();
   getManagerData();
   incidentToAverage();
   incidentScoresTime();
+  managerTrends();
+  injuryTrends();
 });
