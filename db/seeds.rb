@@ -13,7 +13,7 @@ Login.create(username: "jon123", password: "password", loginable_id: supervisor.
 
 
 
-questions = ['What are you doing?', 'What could do go wrong?', 'How could it affect you?', 'How could it go wrong?']
+questions = ['What are you doing?', 'What are the risks?', 'What could go wrong?', 'What are your safety checks?']
 questions.each do |question|
   Question.create(body: question)
 end

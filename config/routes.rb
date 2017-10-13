@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :workers do
-        resources :tasks, only: [:create]
+        resources :flras, only: [:create]
         get '/:id/task_scores', to: 'task_scores#index'
         get '/:id/flra-counts', to: 'form_counts#index'
         get '/:id/average', to: 'average#show'
