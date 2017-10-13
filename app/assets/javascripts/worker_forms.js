@@ -52,6 +52,7 @@ var updateScore = function(id, score, button, riskScore) {
       form.animate({'left': '-=2000px'}, 300, function() {
         form.hide()
         form.next().removeClass('hidden')
+        form.remove()
       })
       if (document.URL.includes('worker')) {
         fetchAverage($('[data-worker]').data().worker);
