@@ -29,12 +29,11 @@ $(document).ready(function(){
   setListeners();
   revealForm();
   superTaskScores();
-
   getManagerData();
-
   incidentToAverage();
   incidentScoresTime();
   renderCurrentInputs("Risks");
   renderCurrentInputs("Controls");
-  addInput()
+  renderRecentRisks();
+  addInput();
 });

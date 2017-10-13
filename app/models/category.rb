@@ -7,7 +7,6 @@ class Category < ApplicationRecord
     Question.second
             .responses
             .joins(:flra)
-            .where("flras.category_id = ?", id)
-
+            .where("flras.category_id = ?", id).limit(10)
   end
 end
