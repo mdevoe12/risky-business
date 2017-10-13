@@ -4,13 +4,11 @@ class Api::V1::Workers::FlrasController < ApplicationController
 
   def create
     result = JSON.parse(response.request.body.string, symbolize_names: :true)
-    # byebug
-    category = Category.find_by(name: result[:Task_Type])
     flra = Flra.create!(
                           worker_id: 1, #result[:workerId],
                       supervisor_id: result[:Supervisor],
                   worker_risk_score: result[:Risk_Level],
-                        category_id: category.id)
+                        category_id: result[:Task_Type_Id])
          flra.responses.create(body: result[:Exact_Task], question_id: 1)
          flra.responses.create(body: result[:Specific_Risk], question_id: 2)
          flra.responses.create(body: result[:Specific_Concerns], question_id: 3)
