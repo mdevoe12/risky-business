@@ -17,4 +17,23 @@
         </ul>
       </div>
     </div>
-  </div>
+    <div>
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li role="presentation" class="active"><a href="#category-<%= @category.id %>-risks" aria-controls="home" role="tab" data-toggle="tab">Risks</a></li>
+        <li role="presentation"><a href="#category-<%= @category.id %>-controls" aria-controls="profile" role="tab" data-toggle="tab">Controls</a></li>
+      </ul><br>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="category-<%= @category.id %>-risks">
+          <div class="current-risks-table"></div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="category-<%= @category.id %>-controls">
+          <div class="controls-table"></div>
+
+        </div>
+      </div>
+
+    </div>
