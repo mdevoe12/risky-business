@@ -5,7 +5,9 @@ FactoryGirl.define do
     supervisor
     points nil
     category
-    sequence :worker_risk_score {|n| n}
+    sequence :worker_risk_score  do |n|
+      n
+    end
 
     trait :with_responses do
       # titles = ['What are you doing?', 'What could do go wrong?', 'How could it affect you?', 'How could it go wrong?']
