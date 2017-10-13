@@ -33,11 +33,14 @@
             <div class="col-md-6">
               <div id="current-risks-table"></div><br>
                 <form class="form-group text-center">
-                  <h5>Input New Risks:</h5>
-
-                  <input type="text" name="message" placeholder="new risk" class="form-control" id="comment-message"><br>
-                  <button type="button" class="btn btn-primary" id="create-comment">Submit</button>
+                  <h5>Add Risks:</h5>
+                  <input type="hidden" name="input_type" class = "input-type" value= "risks" >
+                  <input type="text" name="message" placeholder="new input" class="form-control" id="new-input"><br>
+                  <button type="button" class="btn btn-primary" id="add-input">Submit</button>
                 </form>
+            </div>
+            <div class="col-md-6">
+              <div id="recent-risks-table"></div><br>
             </div>
           </div>
           <div class="row">

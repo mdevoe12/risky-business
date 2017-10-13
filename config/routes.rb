@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       end
       namespace :categories do
         get '/:id/risks', to: 'risks#index'
+        post '/:id/risks', to: 'risks#create'
       end
       namespace :managers do
         resources :dashboard
