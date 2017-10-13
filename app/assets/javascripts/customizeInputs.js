@@ -5,7 +5,7 @@ function renderCurrentInputs(inputType){
     type: "GET",
     url: "/api/v1/categories/" + categoryId + "/" + inputType.toLowerCase(),
     success: function(inputs){
-      $("#current-risks-table").append('<h3 class="text-center">Form Inputs for ' + categoryName + ' ' + inputType + '</h3>'
+      $('#current-' + inputType.toLowerCase() + '-table').append('<h3 class="text-center">Form Inputs for ' + categoryName + ' ' + inputType + '</h3>'
                         + "<table class='table table-bordered'><tbody>"
                         + generateInputRows(inputs)
                         + "</tbody></table>")
@@ -14,13 +14,15 @@ function renderCurrentInputs(inputType){
 }
 
 function addInput() {
-  $("#add-input").on("click", function() {
+  $(".input-form").on("submit", function(e) {
+    e.preventDefault();
     var newInput = {
-        body: $("#new-input").val()
+        body: $(this).children("#new-input").val()
     }
     var categoryId = $('.category_information').data('id');
-    var inputType = $('.input-type').val();
-
+    var inputType = $(this).children('.input-type').val();
+    console.log(newInput)
+    console.log(inputType)
     $.ajax({
       type:    "POST",
       url:     "/api/v1/categories/" + categoryId + "/" + inputType,

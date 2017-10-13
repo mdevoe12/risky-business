@@ -35,5 +35,6 @@ $(document).ready(function(){
   incidentToAverage();
   incidentScoresTime();
   renderCurrentInputs("Risks");
+  renderCurrentInputs("Controls");
   addInput()
 });
