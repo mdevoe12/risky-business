@@ -1,4 +1,4 @@
-<%= tag :div, class: "category_information", data: {id: @category.id} %>
+<%= tag :div, class: "category_information", data: {id: @category.id, name: @category.name} %>
 
 <div class="text-center">
 
@@ -29,7 +29,20 @@
       <!-- Tab panes -->
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="category-<%= @category.id %>-risks">
-          <div id="current-risks-table"></div>
+          <div class="row">
+            <div class="col-md-6">
+              <div id="current-risks-table"></div><br>
+                <form class="form-group text-center">
+                  <h5>Input New Risks:</h5>
+
+                  <input type="text" name="message" placeholder="new risk" class="form-control" id="comment-message"><br>
+                  <button type="button" class="btn btn-primary" id="create-comment">Submit</button>
+                </form>
+            </div>
+          </div>
+          <div class="row">
+
+          </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="category-<%= @category.id %>-controls">
           <div class="controls-table"></div>

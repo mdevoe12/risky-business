@@ -1,12 +1,12 @@
 function renderCurrentInputs(inputType){
-    var categoryId = $('.category_information').data('id');
+  var categoryId = $('.category_information').data('id');
+  var categoryName = $('.category_information').data('name');
     $.ajax({
     type: "GET",
     url: "/api/v1/categories/" + categoryId + "/risks",
     success: function(inputs){
-      $("#current-risks-table").append('<h3 class="text-center">' + "Electric" + '</h3>'
-                        + "<table class='table table-bordered'><thead>"
-                        + "<tr><th>Name</th></tr></thead><tbody>"
+      $("#current-risks-table").append('<h3 class="text-center">Form Inputs for ' + categoryName + ' Risks</h3>'
+                        + "<table class='table table-bordered'><tbody>"
                         + generateInputRows(inputs)
                         + "</tbody></table>")
     }
