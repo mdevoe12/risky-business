@@ -1,3 +1,5 @@
+<%= tag :div, class: "category_information", data: {id: @category.id} %>
+
 <div class="text-center">
 
 <h1>Manage FLRA Inputs</h1><br>
@@ -12,7 +14,7 @@
         </button>
         <ul class="dropdown-menu text-center" aria-labelledby="categories-dropdown">
           <% @categories.each do |category| %>
-            <li><a href=""><%= link_to category.name, edit_category_path(category) %></a></li>
+            <li><%= link_to category.name, edit_category_path(category) %></li>
           <% end %>
         </ul>
       </div>
