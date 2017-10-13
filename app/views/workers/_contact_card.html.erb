@@ -1,12 +1,13 @@
-<div class="row">
+<div class="row" style="margin-bottom: 30px; background-color: white">
   <div class="col-md-12">
     <div class="col-md-3">
-      <%= image_tag @worker.profile_picture %>
+      <%= image_tag 'https://msudenver.edu/media/sampleassets/profile-placeholder.png', class: 'profile-pic thumbnail'%>
     </div>
-    <div class="col-md-3">
-      <p>Name: <%= "#{@worker.first_name} #{@worker.last_name}" %></p>
-      <p>Average Form Score: <span class="average"></span></p>
-      <p>Follow Ups: <%= @worker.forms_to_follow_up.count %></p>
+    <div class="col-md-3" style="padding-top: 4%">
+      <h4>Name: <%= "#{@worker.first_name} #{@worker.last_name}" %></h4>
+      <h4>Average Form Score: <span class="average"></span></h4>
+      <h4>Unrated Forms: <span class='form-count'></span></h4>
+      <h4>Follow Ups: <span class='follow-count'></span></h4>
     </div>
     <div class="col-md-6">
       <div id="worker-results" >
@@ -15,10 +16,3 @@
     </div>
   </div>
 </div>
-
-<!--
-<div class="col-md-4 panel">
-  <p>Name: <%#= "#{@worker.first_name} #{@worker.last_name}" %></p>
-  <p>Average Form Score: <span class="average"></span></p>
-  <p>Follow Ups: <%#= @worker.forms_to_follow_up.count %></p>
-</div> -->

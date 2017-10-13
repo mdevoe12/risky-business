@@ -1,8 +1,7 @@
 <div class="row form hidden">
   <div class="panel col-md-12" >
-    <h2 class="text-center">FLRA #<%= flra.id %></h2>
+    <h2 class="text-center">FLRA #<%= "#{flra.id} Completed By #{flra.worker.first_name + flra.worker.last_name}" %></h2>
     <p class="text-center">Submitted on <%= flra.created_at.to_formatted_s(:long_ordinal) %> </p>
-    <p class="text-center">Worker: <%= "#{flra.worker.first_name} #{flra.worker.last_name}" %></p>
     <div class="col-md-8">
     <h4 class="text-center">Form Submission</h4>
     <label>Task Description: </label>  <%= flra.description %><br>
@@ -12,8 +11,8 @@
       <p><%= response.body %></p>
     <% end %>
   </div>
-  <div class="col-md-4">
-    <h4 class ="text-center">Results and Follow Up</h4><br>
+  <div class="col-md-4 text-center">
+    <h4 class ="">Results and Follow Up</h4><br>
     <% if flra.flagged? %>
       <label><i class="fa fa-flag" aria-hidden="true"></i> Flagged for Follow Up</label><br><br>
       <% elsif flra.resolved? %>
@@ -38,7 +37,6 @@
         <input type="range" min="1" max="5" value="4" class="slider score-slider">
         <span>4</span>
       </div>
-      <br>
       <br>
       <a href="#" class="btn btn-primary score-button">Submit</a>
     </div>

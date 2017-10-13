@@ -24,7 +24,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'faker'
 # gem 'redis', '~> 3.0'
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 
 # Use Capistrano for deployment
@@ -43,6 +43,7 @@ group :development, :test do
   gem 'rack_session_access'
   gem 'rspec-rails'
   gem 'pry'
+  gem 'shoulda-matchers'
 
 end
 
