@@ -16,20 +16,19 @@ function renderCurrentInputs(inputType){
 function addInput() {
   $(".input-form").on("submit", function(e) {
     e.preventDefault();
+    var textField = $(this).children(".new-input")
     var newInput = {
-        body: $(this).children("#new-input").val()
+        body: textField.val()
     }
     var categoryId = $('.category_information').data('id');
     var inputType = $(this).children('.input-type').val();
-    console.log(newInput)
-    console.log(inputType)
     $.ajax({
       type:    "POST",
-      url:     "/api/v1/categories/" + categoryId + "/" + inputType,
+      url:     "/api/v1/categories/" + categoryId + "/" + inputType.toLowerCase(),
       data:    newInput,
       success: function(newInput) {
-        $('#current-' + inputType + '-table').html('');
-        $("#new-input").val('');
+        $('#current-' + inputType.toLowerCase() + '-table').html('');
+        textField.val('');
         renderCurrentInputs(inputType)
       },
       error: function(xhr) {
