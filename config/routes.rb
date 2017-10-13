@@ -15,6 +15,9 @@ Rails.application.routes.draw do
         get '/flra/:id', to: 'flras#show'
         put '/flras/:id', to: 'flras#update'
       end
+      namespace :categories do
+        get '/:id/risks', to: 'risks#index'
+      end
     end
   end
   get '/followups', to: 'followups#index'
