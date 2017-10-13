@@ -15,3 +15,21 @@
 //= require rails-ujs
 //= require jquery
 //= require_tree .
+
+$(document).ready(function(){
+  if ($('[data-worker]').length > 0) {
+    var workerId = $('[data-worker]').data().worker;
+    fetchAverage(workerId);
+    workerScores();
+    updateCounts();
+  } else if ($('[data-id]').length > 0) {
+    updateSuperCounts();
+  }
+  
+  setListeners();
+  revealForm();
+  superTaskScores();
+  getManagerData();
+  incidentToAverage();
+  incidentScoresTime();
+});

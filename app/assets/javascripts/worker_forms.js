@@ -1,24 +1,6 @@
-
-var slideListener = function() {
-  $('.slider').change(function() {
-    $(this).next().text($(this)[0].value);
-  })
-};
-
 function revealForm() {
   $('div.row.form').first().removeClass('hidden');
 }
-
-var scoreListener = function () {
-  $('.score-button').click(function(event) {
-    event.preventDefault();
-    var id = $(this).parent().data().id;
-    var score = $(this).siblings('div.slidecontainer').children('input.slider.score-slider')[0].value;
-    var button = $(this);
-    var riskScore = $(this).siblings('div.slidecontainer').children('input.slider.risk-slider')[0].value;
-    updateScore(id, score, button, riskScore);
-  })
-};
 
 var fetchAverage = function(workerId) {
   return $.ajax({
