@@ -58,7 +58,8 @@ persons = CSV.parse(file)
       :worker_risk_score => rand(1..7),
       :category_id => rand(1..3),
       :notes => Faker::Hipster.sentence,
-      :follow_up_status => rand(1..2)
+      :follow_up_status => rand(1..2),
+      :created_at => date
     )
 
     4.times do |i|

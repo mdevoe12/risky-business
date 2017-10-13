@@ -26,6 +26,7 @@ $(document).ready(function(){
     updateSuperCounts();
   }
   
+  searchToggleListener();
   setListeners();
   revealForm();
   superTaskScores();

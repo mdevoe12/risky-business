@@ -39,5 +39,9 @@ Rails.application.routes.draw do
 
   get '/support', to: 'support#index'
   get '/tasks', to: 'tasks#index'
-  resources :flras, only: [:show, :update]
+  resources :flras, only: [:show, :update, :index] do
+    collection do
+      match 'search' => 'flras#search', via: [:get, :post], as: :search
+    end
+  end
 end

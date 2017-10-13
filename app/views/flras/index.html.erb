@@ -1,0 +1,23 @@
+<h1>Search Forms</h1>
+
+<%= search_form_for @q, url: search_flras_path, html: { method: :post }, class: 'form-inline' do |f| %>
+  <%= f.label :worker_first_name %>
+  <%= f.search_field :worker_first_name_cont %>
+
+  <%= f.label :worker_last_name%>
+  <%= f.search_field :worker_last_name_cont %>
+
+  <%= f.label :start_date %>
+  <%= f.date_field :created_at_gteq, class: 'form-control input-sm', 'datepicker' => true %>
+
+  <%= f.label :end_date %>
+  <%= f.date_field :created_at_lteq, class: 'form-control input-sm', 'datepicker' => true %>
+
+  <input class="hidden" type="text" value="<%= current_user.id %>">
+
+  <%= f.submit %>
+<% end %>
+
+<div class="panel-group" id="accordion">
+  <%= render partial: 'search_forms', collection: @flras, as: :flra%>
+</div>
