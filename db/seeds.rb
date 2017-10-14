@@ -11,7 +11,14 @@ Login.create(username: "james123", password: "password", loginable_id: manager.i
 supervisor = Supervisor.create(first_name: "Jon", last_name: "Snow", manager_id: manager.id)
 Login.create(username: "jon123", password: "password", loginable_id: supervisor.id, loginable_type: "Supervisor")
 
+supervisor_2 = Supervisor.create(first_name: "Mason", last_name: "Holland", manager_id: manager.id)
+Login.create(username: "mason123", password: "password", loginable_id: supervisor_2.id, loginable_type: "Supervisor")
 
+supervisor_3 = Supervisor.create(first_name: "Bret", last_name: "Funk", manager_id: manager.id)
+Login.create(username: "bret123", password: "password", loginable_id: supervisor_3.id, loginable_type: "Supervisor")
+
+supervisor_4 = Supervisor.create(first_name: "Katie", last_name: "Keel", manager_id: manager.id)
+Login.create(username: "katie123", password: "password", loginable_id: supervisor_4.id, loginable_type: "Supervisor")
 
 questions = ['What are you doing?', 'What are the risks?', 'What could go wrong?', 'What are your safety checks?']
 questions.each do |question|
@@ -41,64 +48,66 @@ counter = 1
 file = File.read('db/csv/player_images.csv')
 persons = CSV.parse(file)
 
-30.times do
-  random_person = persons.sample
-  worker = Worker.create(
-    :first_name => random_person[0].split(' ')[0],
-    :last_name => random_person[0].split(' ')[1]
-  )
-
-  20.times do
-    date = (Date.today - rand(0..30).to_i.days)
-    flra = Flra.create(
-      :description => Faker::Hipster.sentence,
-      :worker_id => worker.id,
-      :supervisor_id => supervisor.id,
-      :points => rand(1..5),
-      :worker_risk_score => rand(1..7),
-      :category_id => rand(1..3),
-      :notes => Faker::Hipster.sentence,
-      :follow_up_status => rand(1..2),
-      :created_at => date
+[supervisor, supervisor_2, supervisor_3, supervisor_4].each do |supervisor|
+  30.times do
+    random_person = persons.sample
+    worker = Worker.create(
+      :first_name => random_person[0].split(' ')[0],
+      :last_name => random_person[0].split(' ')[1]
     )
 
-    4.times do |i|
-      Response.create(
-        :question_id => i + 1,
-        :body => Faker::Hipster.paragraph,
-        :flra_id => flra.id,
+    20.times do
+      date = (Date.today - rand(0..30).to_i.days)
+      flra = Flra.create(
+        :description => Faker::Hipster.sentence,
+        :worker_id => worker.id,
+        :supervisor_id => supervisor.id,
+        :points => rand(1..5),
+        :worker_risk_score => rand(1..7),
+        :category_id => rand(1..3),
+        :notes => Faker::Hipster.sentence,
+        :follow_up_status => rand(1..2),
+        :created_at => date
+      )
+
+      4.times do |i|
+        Response.create(
+          :question_id => i + 1,
+          :body => Faker::Hipster.paragraph,
+          :flra_id => flra.id,
+          :created_at => date,
+          :updated_at => date
+        )
+      end
+    end
+
+    20.times do
+      date = (Date.today - rand(0..30).to_i.days)
+      flra = Flra.create(
+        :description => Faker::Hipster.sentence,
+        :worker_id => worker.id,
+        :supervisor_id => supervisor.id,
+        :worker_risk_score => rand(1..7),
+        :category_id => rand(1..3),
+        :notes => Faker::Hipster.sentence,
+        :follow_up_status => rand(1..2),
         :created_at => date,
         :updated_at => date
       )
+
+      4.times do |i|
+        Response.create(
+          :question_id => i + 1,
+          :body => Faker::Hipster.paragraph,
+          :flra_id => flra.id,
+          :created_at => date,
+          :updated_at => date
+        )
+      end
     end
+    puts "creating record #{counter}"
+    counter += 1
   end
 
-  20.times do
-    date = (Date.today - rand(0..30).to_i.days)
-    flra = Flra.create(
-      :description => Faker::Hipster.sentence,
-      :worker_id => worker.id,
-      :supervisor_id => supervisor.id,
-      :worker_risk_score => rand(1..7),
-      :category_id => rand(1..3),
-      :notes => Faker::Hipster.sentence,
-      :follow_up_status => rand(1..2),
-      :created_at => date,
-      :updated_at => date
-    )
-
-    4.times do |i|
-      Response.create(
-        :question_id => i + 1,
-        :body => Faker::Hipster.paragraph,
-        :flra_id => flra.id,
-        :created_at => date,
-        :updated_at => date
-      )
-    end
-  end
-  puts "creating record #{counter}"
-  counter += 1
+  puts "creation took #{Time.now - start}"
 end
-
-puts "creation took #{Time.now - start}"

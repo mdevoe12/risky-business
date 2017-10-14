@@ -96,10 +96,10 @@
       <%= render partial: 'layouts/navbar' %>
     <% end %>
 
-    <div><% flash.each do |type, message| %>
-      <%= content_tag :div, message.html_safe, class: Alert.alert_type(type) %>
-    <% end %></div>
     <div class="container">
+      <div><% flash.each do |type, message| %>
+        <%= content_tag :div, message, class: "alert-#{type} text-center" %>
+      <% end %></div>
       <%= yield %>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
