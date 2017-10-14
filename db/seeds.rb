@@ -52,9 +52,10 @@ TopRisk.create(category_id: maintenance.id, body: risks.sample)
 
 counter = 1
 
-pictures = ["app/assets/images/profile_pic_1.jpg",
-            "app/assets/images/profile_pic_2.jpg",
-            "app/assets/images/profile_pic_3.jpg"]
+pictures = ["profile_pic_1.jpg",
+            "profile_pic_2.jpg",
+            "profile_pic_3.jpg"]
+
 
 tasks = ["replace electrical lines in mine",
       "install panels on building A",
