@@ -66,6 +66,8 @@ notes = ["discussion took place and action plan for improvement formulated",
 
 responses = [""]
 
+Worker.create(first_name: "Dan", last_name: "Alvarez", image: "Dan.jpg")
+
 15.times do
   worker = Worker.create(
     :first_name => Faker::Name.first_name[0...7],
@@ -73,7 +75,7 @@ responses = [""]
     :image => pictures.sample
   )
 
-  10.times do
+  3.times do
     worker_risk = rand(1..7)
     super_risk = rand(1..7)
     date = (Date.today - rand(0..30).to_i.days)
@@ -87,7 +89,30 @@ responses = [""]
       :risk_differential => (super_risk - worker_risk).abs,
       :category_id => Category.all.sample.id,
       :notes => notes.sample,
-      :follow_up_status => rand(0..2),
+      :follow_up_status => 0,
+    )
+
+    Response.create(:question_id => 1, :body => tasks.sample, :flra_id => flra.id, :created_at => date, :updated_at => date)
+    Response.create(:question_id => 2, :body => risks.sample, :flra_id => flra.id, :created_at => date, :updated_at => date)
+    Response.create(:question_id => 3, :body => go_wrongs.sample, :flra_id => flra.id, :created_at => date, :updated_at => date)
+    Response.create(:question_id => 4, :body => safety_checks.sample, :flra_id => flra.id, :created_at => date, :updated_at => date)
+  end
+
+  3.times do
+    worker_risk = rand(1..7)
+    super_risk = rand(1..7)
+    date = (Date.today - rand(0..30).to_i.days)
+    flra = Flra.create!(
+      :description => tasks.sample,
+      :worker_id => worker.id,
+      :supervisor_id => Supervisor.all.sample.id,
+      :points => rand(1..5),
+      :worker_risk_score => worker_risk,
+      :super_risk_score => super_risk,
+      :risk_differential => (super_risk - worker_risk).abs,
+      :category_id => Category.all.sample.id,
+      :notes => notes.sample,
+      :follow_up_status => 1,
     )
 
     Response.create(:question_id => 1, :body => tasks.sample, :flra_id => flra.id, :created_at => date, :updated_at => date)
@@ -107,7 +132,7 @@ responses = [""]
       :worker_risk_score => worker_risk,
       :category_id => rand(1..3),
       :notes => notes.sample,
-      :follow_up_status => 0,
+      :follow_up_status => 2,
       :created_at => date,
       :updated_at => date
     )
