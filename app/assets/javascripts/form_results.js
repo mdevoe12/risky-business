@@ -27,7 +27,7 @@ function superTaskScores() {
               '#C4900F',
             ],
       title: {
-          text: 'September 2017 FLRA Scores'
+          text: 'October 2017 FLRA Scores'
       },
       tooltip: {
           pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

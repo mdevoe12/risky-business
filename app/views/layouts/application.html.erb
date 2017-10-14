@@ -89,7 +89,7 @@
     <% if current_user %>
       <%= render partial: "layouts/#{current_user.class.to_s.downcase}_navbar" %>
     <% end %>
-
+    
     <div class="container">
       <div><% flash.each do |type, message| %>
         <%= content_tag :div, message, class: "alert-#{type} text-center" %>
