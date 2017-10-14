@@ -22,7 +22,7 @@ var scoreListener = function () {
 };
 
 function resolvedListener() {
-  $('.resolved-button').on('click', function(event) {
+  $('#followups-table').on('click', function(event) {
 
     event.preventDefault();
     var $button = $(event.target);
