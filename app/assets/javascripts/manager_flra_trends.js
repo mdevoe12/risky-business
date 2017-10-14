@@ -38,7 +38,7 @@ function injuryTrends() {
         type: 'column'
     },
     title: {
-        text: 'Injury Count by Month'
+        text: 'Injury Report by Month'
     },
     xAxis: {
         type: 'category',
@@ -53,7 +53,7 @@ function injuryTrends() {
     yAxis: {
         min: 0,
         title: {
-            text: 'Number of Injuries'
+            text: 'Injury Count'
         }
     },
     legend: {
