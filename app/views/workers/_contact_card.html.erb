@@ -1,7 +1,7 @@
 <div class="row" style="margin-bottom: 30px; background-color: white">
   <div class="col-md-12">
     <div class="col-md-3">
-      <%= image_tag 'https://msudenver.edu/media/sampleassets/profile-placeholder.png', class: 'profile-pic thumbnail'%>
+      <%= image_tag(@worker.image, class: 'profile-pic img-responsive thumbnail')%>
     </div>
     <div class="col-md-3" style="padding-top: 4%">
       <h4>Name: <%= "#{@worker.first_name} #{@worker.last_name}" %></h4>
