@@ -10,7 +10,10 @@ class Worker < ApplicationRecord
   end
 
   def outstanding_flras(super_id)
-    flras.includes(:questions, :responses).where(points: nil, supervisor_id: super_id)
+    flras
+      .includes(:questions, :responses)
+      .where(points: nil, supervisor_id: super_id)
+      .order(created_at: :desc)
   end
 
   def forms_to_follow_up(super_id)
