@@ -25,7 +25,8 @@ $(document).ready(function(){
   } else if ($('[data-id]').length > 0) {
     updateSuperCounts();
   }
-  
+]
+
   searchToggleListener();
   setListeners();
   revealForm();
@@ -33,4 +34,8 @@ $(document).ready(function(){
   getManagerData();
   incidentToAverage();
   incidentScoresTime();
+  renderCurrentInputs("Risks");
+  renderCurrentInputs("Controls");
+  renderRecentRisks();
+  addInput();
 });

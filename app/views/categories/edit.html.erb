@@ -1,0 +1,61 @@
+<%= tag :div, class: "category_information", data: {id: @category.id, name: @category.name} %>
+
+<div class="text-center">
+
+<h1>Manage FLRA Inputs</h1><br>
+</div>
+  <div class="container-fluid text-center">
+    <h2><%= @category.name %></h2>
+      <div class="dropdown col-md-2 col-md-offset-5">
+
+        <button class="btn btn-default dropdown-toggle" type="button" id="categories-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Job Categories
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu text-center" aria-labelledby="categories-dropdown">
+          <% @categories.each do |category| %>
+            <li><%= link_to category.name, edit_category_path(category) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div><br>
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li role="presentation" class="active"><a href="#category-<%= @category.id %>-risks" aria-controls="home" role="tab" data-toggle="tab">Risks</a></li>
+        <li role="presentation"><a href="#category-<%= @category.id %>-controls" aria-controls="profile" role="tab" data-toggle="tab">Controls</a></li>
+      </ul><br>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="category-<%= @category.id %>-risks">
+          <div class="row">
+            <div class="col-md-6">
+              <div id="current-risks-table"></div><br>
+                <form class="form-group text-center input-form">
+                  <h5>Add Risks:</h5>
+                  <input type="hidden" name="input_type" class = "input-type" value= "Risks" >
+                  <input type="text" name="message" placeholder="new input" class="form-control new-input"><br>
+                  <input type="submit" value="Submit" class="btn btn-primary"/>
+                </form>
+            </div>
+            <div class="col-md-6">
+              <div id="recent-risks-table"></div><br>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="category-<%= @category.id %>-controls">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <div id="current-controls-table"></div><br>
+                <form class="form-group text-center input-form">
+                  <h5>Add Controls:</h5>
+                  <input type="hidden" name="input_type" class = "input-type" value= "Controls" >
+                  <input type="text" name="message" placeholder="new input" class="form-control new-input" ><br>
+                  <input type="submit" value="Submit" class="btn btn-primary"/>
+                </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
