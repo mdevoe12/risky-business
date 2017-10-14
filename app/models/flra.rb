@@ -14,13 +14,15 @@ class Flra < ApplicationRecord
   end
 
   def calc_diff
-    differential = (super_risk_score - worker_risk_score).abs
-    self.risk_differential = differential
+    if super_risk_score
+      differential = (super_risk_score - worker_risk_score).abs
+      self.risk_differential = differential
+    end
   end
 
   def update_followup_status
     calc_diff
-    if (self.not_flagged? && (risk_differential > 1 || points < 3))
+    if (super_risk_score && self.not_flagged? && (risk_differential > 1 || points < 3))
       self.follow_up_status = 1
     end
   end
