@@ -2,6 +2,8 @@ class Supervisor < ApplicationRecord
   has_many :flras
   has_many :workers, through: :flras
   belongs_to :manager
+  has_many :logins, :as => :loginable
+
 
   def flra_score_counts
     flras.group("points").count
@@ -18,10 +20,14 @@ class Supervisor < ApplicationRecord
   end
 
   def outstanding_flras
-    flras.includes(:responses, :questions).where(points: nil)
+    flras.includes(:responses, :questions, :worker).where(points: nil)
   end
 
   def outstanding_flras_for_worker(worker)
     flras.where(points: nil).where(worker: worker)
+  end
+
+  def form_counts
+    {forms: outstanding_flras.count, followups: followup_flras.count}
   end
 end

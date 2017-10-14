@@ -23,15 +23,15 @@
     <label>Worker Risk Score: </label> <%= @flra.worker_risk_score %> <br><br>
     <label>Supervisor Risk Score:</label> <%= @flra.super_risk_score %> <br><br>
     <label>Risk Differential:</label> <%= @flra.risk_differential %> <br><br>
-    <p id="flra-notes"><label>Notes: </label> </p>
     <div class="text-center">
+    <p class="flra-notes"><label>Notes:</label> <span class="note-text"><%= @flra.notes %></span></p>
 
-    <button type="button" name="button" class="btn btn-primary" id="add-notes">Add Notes</button><br><br>
-    
-    <form class="form-group hidden" id="add-flra-notes">
-          <input type="hidden" name="flra_id" id ="flra-id" value= "<%= @flra.id %>" >
+    <button type="button" name="button" class="btn btn-primary add-notes">Add Notes</button><br><br>
+
+    <form class="form-group hidden add-flra-notes">
+          <input type="hidden" name="flra_id"  class="flra-id" value= "<%= @flra.id %>" >
           <textarea type="text" name="message" class="form-control" id="note-body"> <%= @flra.notes %>  </textarea><br>
-          <button type="button" class="btn btn-primary" id="submit-note">Submit</button>
+          <button type="button" class="btn btn-primary submit-note">Submit</button>
     </form>
 
     <% if @flra.flagged? %>

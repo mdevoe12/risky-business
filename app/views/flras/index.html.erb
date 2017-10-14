@@ -1,0 +1,53 @@
+<h1>Search Forms</h1>
+<br>
+
+<div class="row">
+  <div class="col-md-3">
+    <br>
+    <br>
+    <%= search_form_for @q, url: search_flras_path, html: { method: :post } do |f| %>
+      <div class="form-group">
+        <%= f.label :worker_first_name %>
+        <%= f.search_field :worker_first_name_cont, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :worker_last_name%>
+        <%= f.search_field :worker_last_name_cont, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :start_date %>
+        <%= f.date_field :created_at_gteq, class: 'form-control input-sm', 'datepicker' => true %>
+
+        <%= f.label :end_date %>
+        <%= f.date_field :created_at_lteq, class: 'form-control input-sm', 'datepicker' => true %>
+      </div>
+
+      <% if current_user.class == Supervisor %>
+        <input class="hidden" type="search" name="q[supervisor_id_eq]" value="<%= current_user.id %>">
+      <% else %>
+        <div class="form-group">
+          <%= f.label :supervisor_name %>
+          <%= f.select :supervisor_first_name_eq, Supervisor.pluck(:first_name), class: 'form-control' %>
+        </div>
+      <% end %>
+
+      <div class="text-center">
+        <%= f.submit 'Search', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+    <br>
+  </div>
+
+  <div class="col-md-9">
+    <% if @flras.empty? %>
+      <h3>No Results Yet!</h3>
+    <% else %>
+      <h3>Results: <%= @flras.count %></h3>
+    <% end %>
+    <div class="panel-group" id="accordion">
+      <%= render partial: 'search_forms', collection: @flras, as: :flra%>
+    </div>
+  </div>
+</div>
