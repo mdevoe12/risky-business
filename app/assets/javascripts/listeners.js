@@ -25,9 +25,9 @@ function resolvedListener() {
   $('.resolved-button').on('click', function(event) {
 
     event.preventDefault();
-    var$button = $(event.target);
-    var$tableRow = $button.parent().parent()
-    varid = $button.parent().data().formid;
+    var $button = $(event.target);
+    var $tableRow = $button.parent().parent()
+    var id = $button.parent().data().formid;
     return $.ajax({
       method: 'PUT',
       url: "/api/v1/flras/" + id,

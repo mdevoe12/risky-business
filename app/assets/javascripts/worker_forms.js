@@ -13,8 +13,8 @@ var fetchAverage = function(workerId) {
 }
 
 function updateCounts() {
-  varworker_id = $('[data-worker]').data().worker
-  varsuper_id = $('[data-worker]').data().super
+  var worker_id = $('[data-worker]').data().worker
+  var super_id = $('[data-worker]').data().super
   $.ajax({
     url: "/api/v1/workers/" + worker_id + "/flra-counts/",
     method: 'GET',
@@ -27,7 +27,7 @@ function updateCounts() {
 }
 
 function updateSuperCounts() {
-  varsuper_id = $('[data-id]').data().id
+  var super_id = $('[data-id]').data().id
   $.ajax({
     url: "/api/v1/supervisors/" + super_id + "/flra-counts/",
     method: 'GET',
@@ -39,7 +39,7 @@ function updateSuperCounts() {
 }
 
 var updateScore = function(id, score, button, riskScore) {
-  varform = button.parent().parent().parent().parent()
+  var form = button.parent().parent().parent().parent()
   return $.ajax({
     url: '/api/v1/supervisors/flras/' + id,
     method: 'PUT',
