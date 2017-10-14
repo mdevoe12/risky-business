@@ -88,8 +88,8 @@
   <body>
 
     <div className="header"><h1><img src='//barrick.q4cdn.com/808035602/files/design/logo.png' alt=‘Barrick Gold Logo’/></h1></div>
-    <% if !current_page?(root_path)  %>
-      <%= render partial: 'layouts/navbar' %>
+    <% if current_user %>
+      <%= render partial: "layouts/#{current_user.class.to_s.downcase}_navbar" %>
     <% end %>
 
     <div><% flash.each do |type, message| %>
