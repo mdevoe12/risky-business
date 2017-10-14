@@ -16,7 +16,7 @@ function updateCounts() {
   varworker_id = $('[data-worker]').data().worker
   varsuper_id = $('[data-worker]').data().super
   $.ajax({
-    url: `/api/v1/workers/${worker_id}/flra-counts/`,
+    url: "/api/v1/workers/" + worker_id + "/flra-counts/",
     method: 'GET',
     data: {super_id: super_id},
     success: function(data) {
@@ -29,7 +29,7 @@ function updateCounts() {
 function updateSuperCounts() {
   varsuper_id = $('[data-id]').data().id
   $.ajax({
-    url: `/api/v1/supervisors/${super_id}/flra-counts/`,
+    url: "/api/v1/supervisors/" + super_id + "/flra-counts/",
     method: 'GET',
     success: function(data) {
       $('.super-form-count').text(data.forms)

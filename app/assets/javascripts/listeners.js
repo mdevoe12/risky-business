@@ -30,7 +30,7 @@ function resolvedListener() {
     varid = $button.parent().data().formid;
     return $.ajax({
       method: 'PUT',
-      url: `/api/v1/flras/${id}`,
+      url: "/api/v1/flras/" + id,
       data: {flra: {follow_up_status: 'resolved'}},
       success: function(data) {
         $tableRow.slideUp(300)
