@@ -55,7 +55,10 @@ function superTaskScores() {
               name: 'Needs Improvement',
               y: needs_improvement_count
           }]
-        }]
+        }],
+        credits: {
+       enabled: false
+      }
       })
     }
   });

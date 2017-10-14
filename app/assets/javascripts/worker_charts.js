@@ -54,7 +54,10 @@ function workerScores() {
           name: 'Needs Improvement',
           y: needs_improvement_count
       }]
-    }]
+    }],
+    credits: {
+   enabled: false
+  }
   })
   }
   });

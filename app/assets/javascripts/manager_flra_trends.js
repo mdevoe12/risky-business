@@ -28,7 +28,10 @@ function managerTrends() {
       }, {
           name: 'Needs Improvement',
           data: [3.0, 4.0, 5.0, 8.0, 11.0, 15.0, 17.0, 16.0, 14.0, 10.0]
-      }]
+      }],
+      credits: {
+     enabled: false
+    }
   });
 }
 
@@ -88,6 +91,9 @@ function injuryTrends() {
                 fontFamily: 'Verdana, sans-serif'
             }
         }
-    }]
+    }],
+    credits: {
+   enabled: false
+  }
 });
 }

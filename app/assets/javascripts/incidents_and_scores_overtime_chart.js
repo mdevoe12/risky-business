@@ -70,7 +70,10 @@ function incidentScoresTime() {
                 lineColor: Highcharts.getOptions().colors[3],
                 fillColor: 'white'
             }
-        }]
+        }],
+        credits: {
+       enabled: false
+      }
     });
   }
 }
