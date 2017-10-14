@@ -2,7 +2,7 @@ class FlrasController < ApplicationController
   def index
     if params[:q]
       if params[:q][:created_at_gteq].empty? || params[:q][:created_at_lteq].empty?
-        flash[:danger] = 'Please enter a Start and End Date'
+        flash.now[:danger] = 'Please enter a Start and End Date'
         @q = Flra.ransack(params[:q])
         @flras = []
       else
