@@ -25,7 +25,7 @@ gem 'jquery-rails'
 gem 'faker'
 # gem 'redis', '~> 3.0'
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'ransack', github: 'activerecord-hackery/ransack'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -36,7 +36,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'faker'
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'factory_girl_rails'

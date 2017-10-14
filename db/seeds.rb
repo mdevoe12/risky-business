@@ -56,6 +56,7 @@ pictures = ["profile_pic_1.jpg",
             "profile_pic_2.jpg",
             "profile_pic_3.jpg"]
 
+
 tasks = ["replace electrical lines in mine",
       "install panels on building A",
       "replace pipes in generators"]
