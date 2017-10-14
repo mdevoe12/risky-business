@@ -33,4 +33,8 @@ $(document).ready(function(){
   getManagerData();
   incidentToAverage();
   incidentScoresTime();
+  renderCurrentInputs("Risks");
+  renderCurrentInputs("Controls");
+  renderRecentRisks();
+  addInput();
 });
