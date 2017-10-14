@@ -56,7 +56,7 @@ function renderFlrasChart(flras) {
       },
       series: [{
           type: 'pie',
-          name: 'Browser share',
+          name: 'percentage',
           innerSize: '50%',
           data: [
               ['Satisfactory', flras.satisfactory],

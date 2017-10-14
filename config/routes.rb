@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :workers do
-        resources :tasks, only: [:create]
+        resources :flras, only: [:create]
         get '/:id/task_scores', to: 'task_scores#index'
         get '/:id/flra-counts', to: 'form_counts#index'
         get '/:id/average', to: 'average#show'
@@ -24,7 +24,13 @@ Rails.application.routes.draw do
         get '/flra/:id', to: 'flras#show'
         put '/flras/:id', to: 'flras#update'
       end
-
+      namespace :categories do
+        get '/:id/risks', to: 'risks#index'
+        post '/:id/risks', to: 'risks#create'
+        get '/:id/controls', to: 'controls#index'
+        post '/:id/controls', to: 'controls#create'
+        get '/:id/risk_responses', to: 'risk_responses#index'
+      end
       namespace :managers do
         resources :dashboard
       end
@@ -36,8 +42,13 @@ Rails.application.routes.draw do
 
   get '/insights', to: 'insights#index'
   resources :workers, only: [:index, :show]
+  resources :categories, only: [:edit, :update]
 
   get '/support', to: 'support#index'
   get '/tasks', to: 'tasks#index'
-  resources :flras, only: [:show, :update]
+  resources :flras, only: [:show, :update, :index] do
+    collection do
+      match 'search' => 'flras#search', via: [:get, :post], as: :search
+    end
+  end
 end

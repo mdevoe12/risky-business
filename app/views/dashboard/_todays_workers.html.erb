@@ -3,10 +3,10 @@
   <div class="row">
     <% current_user.workers_by_date(Time.now).each do |worker| %>
       <% worker_class = worker.average_form_score >= 3 ? 'is-good' : 'needs-help' %>
-      <div class="col-md-4">
+      <div class="col-md-4" style="width: auto">
         <a href="<%= worker_path(worker.id) %>">
           <div class="thumbnail contact-card <%= worker_class %>">
-            <img src= "https://msudenver.edu/media/sampleassets/profile-placeholder.png">
+            <%= image_tag(worker.image, class: "img-responsive profile-pics") %>
             <div class="caption">
               <h3><%= worker.first_name %> <%= worker.last_name %></h3>
               <h3>Average Score: <%= worker.average_form_score %></h3>

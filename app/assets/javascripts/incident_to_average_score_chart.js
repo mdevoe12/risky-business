@@ -1,4 +1,5 @@
 function incidentToAverage() {
+  if($('div').is('#incident-map')){
   Highcharts.chart('incident-map', {
       chart: {
           type: 'scatter',
@@ -101,6 +102,7 @@ function incidentToAverage() {
             ]
       }]
     });
+  }
 }
 
 function lowScore() {
