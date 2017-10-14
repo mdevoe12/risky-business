@@ -36,6 +36,7 @@ $(document).ready(function(){
   renderCurrentInputs("Risks");
   renderCurrentInputs("Controls");
   renderRecentRisks();
+  renderFollowups();
   addInput();
   managerTrends();
   injuryTrends();
