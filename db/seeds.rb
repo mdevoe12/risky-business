@@ -5,7 +5,7 @@
 require 'csv'
 start = Time.now
 
-risks = ["Dehydration", "Slipping in puddle", "Getting Cut on Clippers"]
+risks = ["Dehydration", "Slipping in puddle"]
 
 go_wrongs = ["I could fall off a ladder and break my leg.",
              "My coworkers and I could be electrocuted by the portal wires.",
@@ -18,10 +18,11 @@ safety_checks = ["I will make sure I wear a helmet.",
 site = Site.create(name: "Salt Lake City", latitude: 40.758701, longitude: -111.876183)
 manager = Manager.create!(first_name: "James", last_name: "Daniels", site_id: site.id)
 Login.create(username: "manager", password: "password", loginable_id: manager.id, loginable_type: "Manager")
-5.times do
-  supervisor = Supervisor.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, manager_id: manager.id)
-  Login.create(username: "supervisor", password: "password", loginable_id: supervisor.id, loginable_type: "Supervisor")
+4.times do
+  Supervisor.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, manager_id: manager.id)
 end
+login_supervisor = Supervisor.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, manager_id: manager.id)
+Login.create(username: "supervisor", password: "password", loginable_id: login_supervisor.id, loginable_type: "Supervisor")
 
 questions = ['What are you doing?', 'What are the risks?', 'What could go wrong?', 'What are your safety checks?']
 questions.each do |question|
@@ -66,14 +67,20 @@ notes = ["discussion took place and action plan for improvement formulated",
 
 responses = [""]
 
-Worker.create(first_name: "Dan", last_name: "Alvarez", image: "Dan.jpg")
+dan = Worker.create(first_name: "Dan", last_name: "Alvarez", image: "dan.jpg")
 
-15.times do
-  worker = Worker.create(
-    :first_name => Faker::Name.first_name[0...7],
-    :last_name => Faker::Name.last_name[0...6],
-    :image => pictures.sample
-  )
+15.times do |n|
+  if n == 0
+    worker = dan
+    supervisor = login_supervisor
+  else
+    supervisor = Supervisor.all.sample
+    worker = Worker.create(
+      :first_name => Faker::Name.first_name[0...7],
+      :last_name => Faker::Name.last_name[0...6],
+      :image => pictures.sample
+    )
+  end
 
   3.times do
     worker_risk = rand(1..7)
@@ -82,13 +89,13 @@ Worker.create(first_name: "Dan", last_name: "Alvarez", image: "Dan.jpg")
     flra = Flra.create!(
       :description => tasks.sample,
       :worker_id => worker.id,
-      :supervisor_id => Supervisor.all.sample.id,
-      :points => rand(1..5),
+      :supervisor_id => supervisor.id,
+      :points => nil,
       :worker_risk_score => worker_risk,
-      :super_risk_score => super_risk,
-      :risk_differential => (super_risk - worker_risk).abs,
+      :super_risk_score => nil,
+      :risk_differential => nil,
       :category_id => Category.all.sample.id,
-      :notes => notes.sample,
+      :notes => "",
       :follow_up_status => 0,
     )
 
@@ -105,7 +112,7 @@ Worker.create(first_name: "Dan", last_name: "Alvarez", image: "Dan.jpg")
     flra = Flra.create!(
       :description => tasks.sample,
       :worker_id => worker.id,
-      :supervisor_id => Supervisor.all.sample.id,
+      :supervisor_id => supervisor.id,
       :points => rand(1..5),
       :worker_risk_score => worker_risk,
       :super_risk_score => super_risk,
@@ -128,7 +135,8 @@ Worker.create(first_name: "Dan", last_name: "Alvarez", image: "Dan.jpg")
     flra = Flra.create(
       :description => tasks.sample,
       :worker_id => worker.id,
-      :supervisor_id => Supervisor.all.sample.id,
+      :supervisor_id => supervisor.id,
+      :points => rand(1..5),
       :worker_risk_score => worker_risk,
       :category_id => rand(1..3),
       :notes => notes.sample,
