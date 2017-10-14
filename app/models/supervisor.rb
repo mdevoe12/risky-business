@@ -20,7 +20,7 @@ class Supervisor < ApplicationRecord
   end
 
   def outstanding_flras
-    flras.includes(:responses, :questions).where(points: nil)
+    flras.includes(:responses, :questions, :worker).where(points: nil)
   end
 
   def outstanding_flras_for_worker(worker)
