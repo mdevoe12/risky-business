@@ -1,34 +1,40 @@
 function managerTrends() {
   Highcharts.chart('manager-trends', {
-      chart: {
-          type: 'line'
-      },
-      title: {
-          text: 'FLRA Quality Month-by-Month'
-      },
-      xAxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']
-      },
-      yAxis: {
-          title: {
-              text: 'Quantity'
-          }
-      },
-      plotOptions: {
-          line: {
-              dataLabels: {
-                  enabled: true
-              },
-              enableMouseTracking: false
-          }
-      },
-      series: [{
-          name: 'Satisfactory',
-          data: [7.0, 6.0, 9.0, 14.0, 18.0, 21.0, 25.0, 26.0, 23.0, 18.0]
-      }, {
-          name: 'Needs Improvement',
-          data: [3.0, 4.0, 5.0, 8.0, 11.0, 15.0, 17.0, 16.0, 14.0, 10.0]
-      }]
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'FLRA Quality Year-to-Date'
+    },
+    xAxis: {
+        categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October']
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Percentage'
+        }
+    },
+    colors: ['#5c5c61', '#97cffd'],
+    tooltip: {
+        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+        shared: true
+    },
+    plotOptions: {
+        column: {
+            stacking: 'percent'
+        }
+    },
+    series: [{
+        name: 'Needs Improvement',
+        data: [2, 2, 3, 2, 1, 6, 2, 4, 2, 5]
+    }, {
+        name: 'Satisfactory',
+        data: [5, 3, 4, 7, 2, 7, 9, 1, 5, 7]
+    }],
+    credits: {
+      enabled: false
+    }
   });
 }
 
@@ -38,7 +44,7 @@ function injuryTrends() {
         type: 'column'
     },
     title: {
-        text: 'Injury Report by Month'
+        text: 'Injury Report Year-to-Date'
     },
     xAxis: {
         type: 'category',
@@ -62,10 +68,11 @@ function injuryTrends() {
     tooltip: {
         pointFormat: '<b>{point.y:.1f} injuries</b>'
     },
+    colors: ['#960909'],
     series: [{
         name: 'Quantity',
         data: [
-            ['January', 23],
+            ['January', 12],
             ['February', 16],
             ['March', 14],
             ['April', 14],
@@ -88,6 +95,9 @@ function injuryTrends() {
                 fontFamily: 'Verdana, sans-serif'
             }
         }
-    }]
+    }],
+    credits: {
+   enabled: false
+  }
 });
 }

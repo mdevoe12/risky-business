@@ -100,7 +100,10 @@ function incidentToAverage() {
               [lowScore(), lowIncidentRate()], [lowScore(), lowIncidentRate()],
               [highScore(), highIncidentRate()], [highScore(), highIncidentRate()]
             ]
-      }]
+      }],
+      credits: {
+     enabled: false
+    }
     });
   }
 }
