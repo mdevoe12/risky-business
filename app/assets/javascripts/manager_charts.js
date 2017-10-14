@@ -14,11 +14,7 @@ function getManagerData() {
 function appendSupervisorTable(supervisors) {
   supervisors.forEach(function(supervisor) {
   $("#supervisors-header").after(
-    `<tr>
-        <td> ${supervisor.Name} </td>
-        <td> ${supervisor.Reviewed} </td>
-        <td> ${supervisor.Outstanding}</td>
-      </tr> `
+    "<tr><td> " + supervisor.Name + " </td><td> " + supervisor.Reviewed + " </td><td> " + supervisor.Outstanding + "</td></tr>" 
   );
 })
 }

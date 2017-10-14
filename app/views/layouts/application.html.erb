@@ -11,6 +11,8 @@
     <%= javascript_include_tag 'application' %>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <style>
       label {
         text-transform: capitalize;
@@ -73,14 +75,6 @@
 
       .unresolved-row {
         position: relative;
-      }
-
-      .needs-help {
-        border: 4px solid #a50d0d;
-      }
-
-      .is-good {
-        border: 4px solid green;
       }
 
       .contact-card {
