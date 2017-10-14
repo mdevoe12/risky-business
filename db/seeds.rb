@@ -68,8 +68,8 @@ responses = [""]
 
 15.times do
   worker = Worker.create(
-    :first_name => Faker::Name.first_name,
-    :last_name => Faker::Name.last_name,
+    :first_name => Faker::Name.first_name[0...7],
+    :last_name => Faker::Name.last_name[0...6],
     :image => pictures.sample
   )
 
