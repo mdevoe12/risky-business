@@ -24,7 +24,7 @@ function followupRows(flras){
   var rows = ""
   $.each(flras, function(index, flra){
     rows += "<tr class='unresolved-row'>"
-          + "<td scope='row'><a href='#'>" + flra["created_at"] + "</a></td>"
+          + "<td scope='row'><a href='/flras/" + flra["id"] + "'>" + flra["created_at"] + "</a></td>"
           + "<td scope='row'>" + flra["worker"]["first_name"] + " " + flra["worker"]["last_name"] + "</td>"
           + "<td scope='row'>" + flra["category"]["name"] + "</td>"
           + "<td scope='row'>" + flra["points"] + "</td>"
