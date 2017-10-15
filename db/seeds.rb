@@ -1,11 +1,12 @@
-# require 'database_cleaner'
-# DatabaseCleaner.strategy = :truncation
-# DatabaseCleaner.clean
+require 'database_cleaner'
+DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.clean
 
 require 'csv'
 start = Time.now
 
-risks = ["Dehydration", "Slipping in puddle"]
+risks = ["Dehydration", "Slipping in puddle", "Cuts from Broken Glass", "Dust Inhalation or Dust in Eyes",
+        "Falling Off Ladder", "Fall from Scaffold Platform", "Hypothermia"]
 
 go_wrongs = ["I could fall off a ladder and break my leg.",
              "My coworkers and I could be electrocuted by the portal wires.",
@@ -44,8 +45,8 @@ trans_controls = ["Pre-start Check", "Seatbelts", "Tires", "Horn", "Head Lights"
 trans_controls.each do |body|
   Control.create(category_id: transportation.id, body: body)
 end
-TopRisk.create(category_id: transportation.id, body: risks.sample)
-TopRisk.create(category_id: transportation.id, body: risks.sample)
+TopRisk.create(category_id: transportation.id, body: "Falling off Vehicle")
+TopRisk.create(category_id: transportation.id, body: "Electrical Shock")
 
 Control.create(category_id: maintenance.id, body: "Wear Helmet")
 Control.create(category_id: maintenance.id, body: "Bring First Aid Kit")
