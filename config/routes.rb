@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       namespace :supervisors, only: [] do
         get '/:id/task_scores', to: 'task_scores#index'
         get '/:id/flra-counts', to: 'form_counts#index'
+        get '/followups', to: 'followups#index'
       end
 
       namespace :supervisors do

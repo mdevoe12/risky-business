@@ -2,29 +2,4 @@
   <h3>FLRAs Flagged for Follow Up</h3><br>
 </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Submission Date</th>
-      <th>Worker</th>
-      <th>Task Type</th>
-      <th>Quality Score</th>
-      <th>Risk Score Differential</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% current_user.followup_flras.each do |flra| %>
-    <tr class="unresolved-row">
-      <td scope="row"><%= link_to flra.created_at, flra %></td>
-      <td scope="row"><%= "#{flra.worker.first_name} #{flra.worker.last_name}" %></td>
-      <td scope="row"><%= flra.category.name if flra.category %></td>
-      <td scope="row"><%= flra.points %></td>
-      <td scope="row"><%= flra.risk_differential %></td>
-
-      <td scope="row" data-formid="<%= flra.id %>"><%= link_to "Mark as Resolved", '#', class: "btn btn-primary resolved-button" %></td>
-    </tr>
-    <% end %>
-
-  </tbody>
-</table>
+<div id="followups-table"></div>
