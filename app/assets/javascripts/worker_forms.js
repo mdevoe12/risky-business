@@ -59,6 +59,8 @@ var updateScore = function(id, score, button, riskScore) {
         workerScores()
         updateCounts()
       } else {
+        $('#followups-table').html('')
+        renderFollowups()
         updateSuperCounts()
       }
     },
