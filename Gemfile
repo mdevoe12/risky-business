@@ -10,6 +10,8 @@ gem 'rails', '~> 5.1.4'
 gem 'figaro'
 gem 'sidekiq'
 gem 'active_model_serializers'
+gem 'database_cleaner'
+
 
 # Use postgresql as the database for Active Record
 
