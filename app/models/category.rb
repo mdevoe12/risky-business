@@ -7,6 +7,8 @@ class Category < ApplicationRecord
     Question.second
             .responses
             .joins(:flra)
-            .where("flras.category_id = ?", id).limit(20)
+            .where("flras.category_id = ?", id)
+            .order("created_at DESC")
+            .limit(20)
   end
 end
