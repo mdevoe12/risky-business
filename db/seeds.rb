@@ -5,8 +5,10 @@ DatabaseCleaner.clean
 require 'csv'
 start = Time.now
 
-risks = ["Dehydration", "Slipping in puddle", "Cuts from Broken Glass", "Dust Inhalation or Dust in Eyes",
-        "Falling Off Ladder", "Fall from Scaffold Platform", "Hypothermia"]
+risks = ["Dehydration", "Slipping in puddle", "Cuts from Broken Glass", "Dust Inhalation/Dust in Eyes",
+        "Falling Off Ladder", "Fall from Scaffold Platform", "Hypothermia", "Harmful Chemical Exposure",
+        "Gas Explosion", "Welding Fumes Exposure", "Mercury Exposure",
+        "Radar Exposure", "Underground Mine Flooding", "Cave-In"]
 
 go_wrongs = ["I could fall off a ladder and break my leg.",
              "My coworkers and I could be electrocuted by the portal wires.",
@@ -56,7 +58,9 @@ counter = 1
 
 pictures = ["profile_pic_1.jpg",
             "profile_pic_2.jpg",
-            "profile_pic_3.jpg"]
+            "profile_pic_3.jpg",
+            "profile_pic_4.jpg",
+            "profile_pic_5.jpg"]
 
 
 tasks = ["replace electrical lines in mine",
@@ -70,7 +74,7 @@ responses = [""]
 
 dan = Worker.create(first_name: "Dan", last_name: "Alvarez", image: "dan.jpg")
 
-15.times do |n|
+30.times do |n|
   if n == 0
     worker = dan
     supervisor = login_supervisor
@@ -83,6 +87,7 @@ dan = Worker.create(first_name: "Dan", last_name: "Alvarez", image: "dan.jpg")
     )
   end
 
+# outstanding form
   3.times do
     worker_risk = rand(1..7)
     super_risk = rand(1..7)
@@ -105,7 +110,7 @@ dan = Worker.create(first_name: "Dan", last_name: "Alvarez", image: "dan.jpg")
     Response.create(:question_id => 3, :body => go_wrongs.sample, :flra_id => flra.id, :created_at => date, :updated_at => date)
     Response.create(:question_id => 4, :body => safety_checks.sample, :flra_id => flra.id, :created_at => date, :updated_at => date)
   end
-
+# completed and flagged for follow up
   3.times do
     worker_risk = rand(1..7)
     super_risk = rand(1..7)
@@ -128,7 +133,7 @@ dan = Worker.create(first_name: "Dan", last_name: "Alvarez", image: "dan.jpg")
     Response.create(:question_id => 3, :body => go_wrongs.sample, :flra_id => flra.id, :created_at => date, :updated_at => date)
     Response.create(:question_id => 4, :body => safety_checks.sample, :flra_id => flra.id, :created_at => date, :updated_at => date)
   end
-
+# resolved follow up
   3.times do
     worker_risk = rand(1..7)
     super_risk = rand(1..7)
